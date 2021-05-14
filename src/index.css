@@ -11,3 +11,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  height: 100%;
+}
+
+#components-layout-demo-top-side-2 .logo {
+  float: left;
+  width: 80px;
+  height: 31px;
+  margin: 16px 52px 16px 0;
+  border-radius: 10px;
+}
+
+.ant-row-rtl #components-layout-demo-top-side-2 .logo {
+  float: right;
+  margin: 16px 10px 16px 24px;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+#sider {
+  color: #fff;
+}
+
+#main{
+  height: 100%;
+}
+
+#header-layout { 
+  position: fixed;
+  z-index: 1; 
+  width: 100%; 
+}
+
+#content-layout {
+  padding: 0 24px 24px;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+#content {
+    padding: 24;
+    margin: 0;
+    height: 100%;
+}
+
+#menu {
+  height: 100%;
+  border-right: 0;
+}
+
+#nav-link{
+  font-size: 20px;
+  color: #fff;
+}
+
+#silebar-item {
+  background-color: rgb(88, 149, 240);
+}
