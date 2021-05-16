@@ -8,6 +8,7 @@ import { PieChartOutlined, UserOutlined, LaptopOutlined, NotificationOutlined } 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import 'antd/dist/antd.css';
 import Logo from './logo.jpeg';
+import { Avatar, Image } from 'antd';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -18,18 +19,25 @@ ReactDOM.render(
       <div className="logo" id='components-layout-demo-top-side-2' >
         <img src={Logo} id='components-layout-demo-top-side-2' className='logo'></img>
       </div>
+      
       <Menu theme="dark" mode="horizontal">
-        <Menu.Item key="1" id='nav-link'>nav 1</Menu.Item>
-        <Menu.Item key="2" id='nav-link'>nav 2</Menu.Item>
-        <Menu.Item key="3" id='nav-link'>nav 3</Menu.Item>
+        <Avatar src="https://hicksartgallery.com/wp-content/uploads/2019/09/avatar-gai-xinh.jpg" style={{float: 'right', margin: '16px', borderRadius: '100%'}}/>
+        <Menu.Item key="1" id='nav-link'><UserOutlined /></Menu.Item>
+        <Menu.Item key="2" id='nav-link'><NotificationOutlined /></Menu.Item>
       </Menu>
     </Header>
     <Layout style={{ marginTop: '64px' }}>
-      <Sider width={200} className="site-layout-background" >
+      <Sider style={{
+        overflow: 'auto',
+        height: '100vh',
+        position: 'fixed',
+        width: 200,
+        left: 0,
+      }} className="site-layout-background" >
         <Router>
           <Menu mode="inline" id='menu' >
             <Menu.Item key="0" icon={<PieChartOutlined />}>
-              <Link to='/home/dashboard'>Option 1</Link>
+              <Link to='/home/dashboard'>Dash Board</Link>
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
               <Menu.Item key="1"><Link to='/home/option1'>Option 1</Link></Menu.Item>
@@ -52,9 +60,11 @@ ReactDOM.render(
           </Menu>
         </Router>
       </Sider>
-      <Layout id='content-layout'>
-        <Content className="site-layout-background" id='content'>
-          <App/>
+      <Layout className="site-layout" style={{ marginLeft: 200 }}>
+        <Content id='content-layout'>
+          <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>
+            <App/>
+          </div>
         </Content>
       </Layout>
     </Layout>

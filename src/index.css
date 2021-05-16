@@ -24,9 +24,10 @@ code {
   border-radius: 10px;
 }
 
-.ant-row-rtl #components-layout-demo-top-side-2 .logo {
+.ant-row-rtl #components-layout-demo-top-side-2 .avatar {
   float: right;
   margin: 16px 10px 16px 24px;
+  display: inline;
 }
 
 .site-layout-background {
@@ -45,18 +46,24 @@ code {
   position: fixed;
   z-index: 1; 
   width: 100%; 
+  display: inline;
 }
 
 #content-layout {
   padding: 0 24px 24px;
   margin-top: 1rem;
   margin-bottom: 0;
+  margin-left: 200;
+  margin: 24px 16px 0; 
+  overflow: scroll;
 }
 
 #content {
     padding: 24;
-    margin: 0;
+    margin: 1rem;
     height: 100%;
+    background: #fff;
+    overflow: scroll;
 }
 
 #menu {
@@ -65,6 +72,7 @@ code {
 }
 
 #nav-link{
+  float: right;
   font-size: 20px;
   color: #fff;
 }
