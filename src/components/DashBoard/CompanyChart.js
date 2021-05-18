@@ -1,77 +1,138 @@
 import React from 'react';
-import './CompanyChart.css';
 import { Input, DatePicker, Button } from 'antd';
-import { Line } from '@ant-design/charts';
-
+import { Column } from '@ant-design/charts';
+import './CompanyChart.css';
 const CompanyChart = () => {
-    const data = [
-        {name: "Công", hour: '8h', amount: 0},
-        {name: "Công", hour: '9h', amount: 23},
-        {name: "Công", hour: '10h', amount: 24},
-        {name: "Công", hour: '11h', amount: 22},
-        {name: "Công", hour: '12h', amount: 25},
-        {name: "Công", hour: '14h', amount: 21},
-        {name: "Công", hour: '15h', amount: 24},
-        {name: "Công", hour: '16h', amount: 22},
-        {name: "Công", hour: '17h', amount: 21},
-        {name: "Luật", hour: '8h', amount: 0},
-        {name: "Luật", hour: '9h', amount: 20},
-        {name: "Luật", hour: '10h', amount: 21},
-        {name: "Luật", hour: '11h', amount: 17},
-        {name: "Luật", hour: '12h', amount: 12},
-        {name: "Luật", hour: '14h', amount: 22},
-        {name: "Luật", hour: '15h', amount: 20},
-        {name: "Luật", hour: '16h', amount: 23},
-        {name: "Luật", hour: '17h', amount: 21},
-        {name: "Hiếu", hour: '8h', amount: 0},
-        {name: "Hiếu", hour: '9h', amount: 18},
-        {name: "Hiếu", hour: '10h', amount: 22},
-        {name: "Hiếu", hour: '11h', amount: 24},
-        {name: "Hiếu", hour: '12h', amount: 19},
-        {name: "Hiếu", hour: '14h', amount: 12},
-        {name: "Hiếu", hour: '15h', amount: 24},
-        {name: "Hiếu", hour: '16h', amount: 20},
-        {name: "Hiếu", hour: '17h', amount: 21},
-        {name: "Đô", hour: '8h', amount: 0},
-        {name: "Đô", hour: '9h', amount: 19},
-        {name: "Đô", hour: '10h', amount: 21},
-        {name: "Đô", hour: '11h', amount: 22},
-        {name: "Đô", hour: '12h', amount: 23},
-        {name: "Đô", hour: '14h', amount: 19},
-        {name: "Đô", hour: '15h', amount: 25},
-        {name: "Đô", hour: '16h', amount: 22},
-        {name: "Đô", hour: '17h', amount: 20},
-    ];
-    var config = {
-        data: data,
-        eight: 400,
-        xField: 'hour',
-        yField: 'amount',
-        seriesField: 'name',
-        yAxis: {
-            label: {
-              formatter: function formatter(v) {
-                return ''.concat(v, ' Chiếc');
-              },
-            },
-        },
-        legend: { position: 'top' },
-        smooth: true,
-        animation: {
-          appear: {
-            animation: 'path-in',
-            duration: 5000,
-          },
-        },
-    };
-    return (
-        <div className='chart-company'>
-            <Input.Group compact>
-            <DatePicker style={{ width: '20%', marginBottom: '1rem'}} /><Button type="primary">Chọn ngày</Button>
-            </Input.Group>
-            <Line {...config} />
-        </div>
-    );
+  var data = [
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 01',
+      kpi: 18.9,
+    },
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 02',
+      kpi: 28.8,
+    },
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 03',
+      kpi: 39.3,
+    },
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 04',
+      kpi: 81.4,
+    },
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 05',
+      kpi: 47,
+    },
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 06',
+      kpi: 20.3,
+    },
+    {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 07',
+      kpi: 24,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 01',
+      kpi: 18.9,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 02',
+      kpi: 28.8,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 03',
+      kpi: 39.3,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 04',
+      kpi: 81.4,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 05',
+      kpi: 47,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 06',
+      kpi: 20.3,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 07',
+      kpi: 24,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 01',
+      kpi: 12.4,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 02',
+      kpi: 23.2,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 03',
+      kpi: 34.5,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 04',
+      kpi: 99.7,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 05',
+      kpi: 52.6,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 06',
+      kpi: 35.5,
+    },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 07',
+      kpi: 37.4,
+    },
+  ];
+  var config = {
+    data: data,
+    isGroup: true,
+    xField: 'team',
+    yField: 'kpi',
+    seriesField: 'name',
+    label: {
+      position: 'middle',
+      layout: [
+        { type: 'interval-adjust-position' },
+        { type: 'interval-hide-overlap' },
+        { type: 'adjust-color' },
+      ],
+    },
+  };
+  return (
+    <div className='chart-company'>
+      <Input.Group compact>
+        <DatePicker style={{ width: '20%', marginBottom: '1rem', float: 'left'}} /><Button type="primary" style={{ width: '10%', marginBottom: '1rem', float: 'left'}}>Chọn tháng</Button>
+      </Input.Group>
+      <Column {...config} />
+    </div>
+  );
 }
 
 export default CompanyChart;

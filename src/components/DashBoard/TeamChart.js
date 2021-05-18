@@ -1,8 +1,15 @@
 import React from 'react';
-import { Input, DatePicker, Button } from 'antd';
-import { Line } from '@ant-design/charts';
 import './TeamChart.css';
-const TeamChart = () => {
+import { Input, DatePicker, Button, Select } from 'antd';
+import { Line } from '@ant-design/charts';
+const { Option } = Select;
+
+const CompanyChart = () => {
+
+// import { Input, DatePicker, Button } from 'antd';
+// import { Line } from '@ant-design/charts';
+// import './TeamChart.css';
+// const TeamChart = () => {
     const data = [
         {name: "Công", hour: '8h', amount: 0},
         {name: "Công", hour: '9h', amount: 23},
@@ -66,11 +73,31 @@ const TeamChart = () => {
     return (
         <div className='chart-team'>
             <Input.Group compact>
-            <DatePicker style={{ width: '20%', marginBottom: '1rem'}} /><Button type="primary">Chọn ngày</Button>
+              <p style={{ width: '15%', float: 'left', paddingTop: '3px', fontSize: '16px'}}>Chọn ngày:</p>
+              <DatePicker style={{ width: '20%', float: 'left'}}/>
+            </Input.Group>
+            <br/>
+            <Input.Group compact>
+              <p style={{ width: '15%', float: 'left', paddingTop: '3px', fontSize: '16px'}}>Chọn đơn vị:</p>
+              <Select defaultValue="HCI 07" style={{ width: '20%', marginBottom: '1rem', float: 'left'}}>
+                <Option value="HCI 01">HCI 01</Option>
+                <Option value="HCI 02">HCI 02</Option>
+                <Option value="HCI 03">HCI 03</Option>
+                <Option value="HCI 04">HCI 04</Option>
+                <Option value="HCI 05">HCI 05</Option>
+                <Option value="HCI 06">HCI 06</Option>
+                <Option value="HCI 07">HCI 07</Option>
+              </Select>
+            </Input.Group>
+            <Input.Group compact>
+              <Button type="primary" style={{ float: 'left' , marginLeft: '150px'}}>
+                Duyệt
+              </Button>
             </Input.Group>
             <Line {...config} />
         </div>
     );
 }
 
-export default TeamChart;
+export default CompanyChart;
+
