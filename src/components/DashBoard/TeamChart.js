@@ -5,6 +5,11 @@ import { Line } from '@ant-design/charts';
 const { Option } = Select;
 
 const CompanyChart = () => {
+
+// import { Input, DatePicker, Button } from 'antd';
+// import { Line } from '@ant-design/charts';
+// import './TeamChart.css';
+// const TeamChart = () => {
     const data = [
         {name: "Công", hour: '8h', amount: 0},
         {name: "Công", hour: '9h', amount: 23},
@@ -45,7 +50,7 @@ const CompanyChart = () => {
     ];
     var config = {
         data: data,
-        eight: 400,
+        height: 400,
         xField: 'hour',
         yField: 'amount',
         seriesField: 'name',
@@ -95,6 +100,4 @@ const CompanyChart = () => {
 }
 
 export default CompanyChart;
-
-
 
