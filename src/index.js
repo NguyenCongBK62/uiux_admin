@@ -1,14 +1,15 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import { PieChartOutlined, UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import 'antd/dist/antd.css';
 import Logo from './logo.jpeg';
-import { Avatar, Image } from 'antd';
+import { Avatar } from 'antd';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -45,11 +46,11 @@ ReactDOM.render(
               <Menu.Item key="3">option3</Menu.Item>
               <Menu.Item key="4">option4</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-              <Menu.Item key="5">option5</Menu.Item>
-              <Menu.Item key="6">option6</Menu.Item>
-              <Menu.Item key="7">option7</Menu.Item>
-              <Menu.Item key="8">option8</Menu.Item>
+            <SubMenu key="sub2" icon={<LaptopOutlined />} title="Quản lý chuyền">
+              <Menu.Item key="5">
+                <Link to="/home/proline-table">Bảng quản lý</Link>
+              </Menu.Item>
+              <Menu.Item key="6">Tạo chuyền</Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
               <Menu.Item key="9">option9</Menu.Item>

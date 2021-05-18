@@ -1,9 +1,33 @@
 import './App.css';
-import DashBoard from './components/DashBoard/DashBoard';
+import { 
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom';
+
+import routes from './routes';
+
 function App() {
   return (
     <div className="App">
-      <DashBoard/>
+      <Router>
+        <Switch>
+          {
+            routes.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.main}
+                />
+              )
+            })
+          }
+          <Redirect from="/" to="/home/dashboard" />
+        </Switch>
+      </Router>
     </div>
   );
 }
