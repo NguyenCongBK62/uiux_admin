@@ -16,6 +16,7 @@ const { Header, Content, Sider } = Layout;
 
 ReactDOM.render(
   <Layout id="main">
+    <Router>
     <Header id='header-layout'>
       <div className="logo" id='components-layout-demo-top-side-2' >
         <img src={Logo} id='components-layout-demo-top-side-2' className='logo'></img>
@@ -35,13 +36,12 @@ ReactDOM.render(
         width: 200,
         left: 0,
       }} className="site-layout-background" >
-        <Router>
           <Menu mode="inline" id='menu' >
             <Menu.Item key="0" icon={<PieChartOutlined />}>
-              <Link to='/'>Dash Board</Link>
+              <Link to="/">Dash Board</Link>
             </Menu.Item>
             <SubMenu key="sub1" icon={<SnippetsOutlined />} title="Quản lí công việc">
-              <Menu.Item key="1"><Link to='/admin/commandwork'>Lệnh sản xuất</Link></Menu.Item>
+              <Menu.Item key="1"><Link to="/commandwork">Lệnh sản xuất</Link></Menu.Item>
               <Menu.Item key="2">option2</Menu.Item>
               <Menu.Item key="3">option3</Menu.Item>
               <Menu.Item key="4">option4</Menu.Item>
@@ -59,7 +59,7 @@ ReactDOM.render(
               <Menu.Item key="12">option12</Menu.Item>
             </SubMenu>
           </Menu>
-        </Router>
+        
       </Sider>
       <Layout className="site-layout" style={{ marginLeft: 200 }}>
         <Content id='content-layout'>
@@ -69,6 +69,7 @@ ReactDOM.render(
         </Content>
       </Layout>
     </Layout>
+    </Router>
   </Layout>
 ,document.getElementById('root'));
 reportWebVitals();

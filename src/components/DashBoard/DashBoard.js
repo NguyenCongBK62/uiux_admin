@@ -3,9 +3,6 @@ import './DashBoard.css';
 import TeamChart from './CompanyChart';
 import CompanyChart from './TeamChart';
 
-// import TeamChart from './TeamChart';
-// import CompanyChart from './CompanyChart';
-
 const DashBoard = () => {
     
   return(
