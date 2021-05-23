@@ -47,6 +47,13 @@ const columns = [
         sortDirections: ['descend', 'ascend'],
     },
     {
+        title: 'Đơn vị thực hiện',
+        dataIndex: 'pro_unit',
+        key: 'pro_unit',
+        sorter: (a, b) => a.pro_unit.length - b.pro_unit.length,
+        sortDirections: ['descend', 'ascend'],
+    },
+    {
         title: 'Thời gian hoàn thành (giây)',
         dataIndex: 'time',
         sorter: (a, b) => a.time - b.time,
@@ -63,23 +70,26 @@ const columns = [
 const data = [
     {
         key: '1',
-        code: 'HCI_01',
+        code: '1249a21',
         name: 'Áo khoác HANU',
         time: 3603,
+        pro_unit: 'HCI_01',
         num_worker: 20
     },
     {
         key: '2',
-        code: 'HCI_07',
+        code: '1549v21',
         name: 'Áo cộc bách khoa',
         time: 3609,
+        pro_unit: 'HCI_07',
         num_worker: 25,
     },
     {
         key: '3',
-        code: 'HCI_05',
+        code: '1248v22',
         name: 'Quần thể dục bách khoa',
         time: 3606,
+        pro_unit: 'HCI_05',
         num_worker: 30
     }
 ]
