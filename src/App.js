@@ -1,31 +1,16 @@
 import './App.css';
-import DashBoard from './components/DashBoard/DashBoard';
-import routes from './routes';
 
 import { Breadcrumb } from 'antd';
 import CommandWork from './components/CommandWork/CommandWork';
+import TablePrLine from './components/ProductLine/TablePrLine';
+import DashBoard from './components/DashBoard/DashBoard';
+
 import {
   Switch,
   Route,
   Link
 } from "react-router-dom";
 function App() {
-
-  const showRoute = (routes) => {
-    let results = null;
-    if (routes.length > 0) {
-      results = routes.map((route, index) => {
-          return <Route 
-            exact={route.exact}
-            path={route.path}
-            component={route.main}
-            key={index}
-          />
-        })
-    }
-
-    return results;
-  }
 
   return (
       <div className="App">
@@ -47,6 +32,15 @@ function App() {
               </Breadcrumb.Item>
             </Breadcrumb>
             <CommandWork/>
+          </Route>
+          <Route path='/proline-table'>
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>Admin</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/commandwork">Dây chuyền sản xuất</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            <TablePrLine />
           </Route>
         </Switch>
       </div>

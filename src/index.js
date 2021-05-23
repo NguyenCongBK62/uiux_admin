@@ -41,16 +41,14 @@ ReactDOM.render(
               <Link to="/">Dash Board</Link>
             </Menu.Item>
             <SubMenu key="sub1" icon={<SnippetsOutlined />} title="Quản lí công việc">
-              <Menu.Item key="1"><Link to="/commandwork">Lệnh sản xuất</Link></Menu.Item>
-              <Menu.Item key="2">option2</Menu.Item>
-              <Menu.Item key="3">option3</Menu.Item>
-              <Menu.Item key="4">option4</Menu.Item>
+              <Menu.Item key="1">
+                <Link to="/commandwork">Lệnh sản xuất</Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" icon={<LaptopOutlined />} title="Quản lý chuyền">
               <Menu.Item key="5">
-                <Link to="/home/proline-table">Bảng quản lý</Link>
+                <Link to="/proline-table">Bảng quản lý</Link>
               </Menu.Item>
-              <Menu.Item key="6">Tạo chuyền</Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
               <Menu.Item key="9">option9</Menu.Item>
