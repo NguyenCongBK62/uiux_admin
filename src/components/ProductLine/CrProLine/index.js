@@ -6,6 +6,7 @@ import { Tabs } from 'antd';
 
 import TabInfoPL from './components/TabInfoPL';
 import AssignCharge from './components/AssignCharge';
+import Diagram from './components/Diagram';
 
 const { TabPane } = Tabs;
 
@@ -34,7 +35,8 @@ const index = (props) => {
                 <TabInfoPL product={product} />
             </TabPane>
             <TabPane tab={`Thiết kế chuỗi công việc`} key={2}>
-                <div>Thiết kế chuỗi công việc</div>
+                {/* <div>Thiết kế chuỗi công việc</div> */}
+                <div><Diagram /></div>
             </TabPane>
             <TabPane tab={`Phân công phụ trách`} key={3}>
                 {/* <div>Phân công phụ trách</div> */}

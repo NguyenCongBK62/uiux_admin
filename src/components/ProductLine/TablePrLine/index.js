@@ -155,7 +155,8 @@ const index = () => {
     }
     
     return (
-        <Card 
+        <div className="table">
+            <Card 
             title={`Bảng thông tin chuyển`}
             extra={
                 <Button 
@@ -177,6 +178,7 @@ const index = () => {
                 <CrProLine id={id} />
             </Modal>
         </Card>
+        </div>
     );
 }
 

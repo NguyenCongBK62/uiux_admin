@@ -2,11 +2,13 @@ import React from 'react';
 import './DashBoard.css';
 import TeamChart from './CompanyChart';
 import CompanyChart from './TeamChart';
+import CardDashboard from './CardDashboard';
 
 const DashBoard = () => {
     
   return(
     <div className='dash-board'>
+      <CardDashboard />
       <h1 style={{fontSize: '30px', textAlign: 'left', paddingLeft: '55px', marginBottom: '2rem'}}>Dash board KPI đơn vị</h1>
       <div>
         <h1 className='label-company'>KPI đơn vị theo giờ</h1>
