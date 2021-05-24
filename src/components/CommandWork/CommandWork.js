@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import './Commandwork.css';
-import { Table, Row, Col, Input, Button, Space, Tag } from 'antd';
+import './CommandWork.css';
+import { Table, Row, Col, Input, Button, Space, Tag, Modal } from 'antd';
 import Highlighter from 'react-highlight-words';
 import AddWork from './AddWork';
+import FixWork from './FixWork';
+import ViewWork from './ViewWork';
 import { DeleteOutlined, EyeOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
 
 const data = [
@@ -46,13 +48,83 @@ const data = [
     dayStart: '22/1/2014',
     dayEnd: '24/1/2014'
   },
+  {
+    key: '5',
+    group: 'HCI_05',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
+  {
+    key: '6',
+    group: 'HCI_06',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
+  {
+    key: '7',
+    group: 'HCI_07',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
+  {
+    key: '8',
+    group: 'HCI_08',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
+  {
+    key: '9',
+    group: 'HCI_09',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
+  {
+    key: '10',
+    group: 'HCI_10',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
+  {
+    key: '11',
+    group: 'HCI_11',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    state: 'Lỗi',
+    factory: 'C',
+    dayStart: '22/1/2014',
+    dayEnd: '24/1/2014'
+  },
 ];
+
 class CommandWork extends Component {
   state = {
     searchText: '',
     searchedColumn: '',
   };
-
   getColumnSearchProps = dataIndex => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
@@ -198,10 +270,10 @@ class CommandWork extends Component {
         render: () => (
           <Row>
             <Col span={8}>
-              <span style={{color: '86eaa0', fontSize: '18px', cursor: 'pointer'}}><EditOutlined /></span>
+              <FixWork/>
             </Col>
             <Col span={8}>
-              <span style={{color: '#86eaa0', fontSize: '18px', cursor: 'pointer'}}><EyeOutlined /></span>
+             <ViewWork/>
             </Col>
             <Col span={8}>
               <span style={{color: 'red', fontSize: '18px', cursor: 'pointer'}}><DeleteOutlined /></span>

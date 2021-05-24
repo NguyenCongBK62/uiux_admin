@@ -10,6 +10,8 @@ import {
     Tag,
 } from 'antd'
 
+import DrawViewered from './DrawViewered';
+
 import { persons } from '../../../../resources/persons';
 import { devices, garment_materials } from '../../../../resources/products';
 
@@ -45,6 +47,7 @@ const AssignCharge = () => {
         <Row>
             <Col span={16}>
                 {/* Khung chuoi cong viec */}
+                <DrawViewered />
             </Col>
             <Col span={1} offset={1}>
                 <div className="vertical-line"></div>

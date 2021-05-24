@@ -35,9 +35,11 @@ function App() {
           </Route>
           <Route path='/proline-table'>
             <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
-              <Breadcrumb.Item>Admin</Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link to="/commandwork">Dây chuyền sản xuất</Link>
+                <Link to="/">Admin</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                Dây chuyền sản xuất
               </Breadcrumb.Item>
             </Breadcrumb>
             <TablePrLine />

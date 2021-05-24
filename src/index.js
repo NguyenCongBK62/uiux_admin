@@ -49,12 +49,15 @@ ReactDOM.render(
               <Menu.Item key="5">
                 <Link to="/proline-table">Bảng quản lý</Link>
               </Menu.Item>
+              {/* <Menu.Item key="6">
+                <Link to="/create-proline">Tạo chuyền</Link>
+              </Menu.Item> */}
             </SubMenu>
-            <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
-              <Menu.Item key="9">option9</Menu.Item>
-              <Menu.Item key="10">option10</Menu.Item>
-              <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item>
+            <SubMenu key="sub3" icon={<NotificationOutlined />} title="Quản lý KPI">
+              <Menu.Item key="9">
+                <Link to="/kpi">KPI tổ chức</Link>
+              </Menu.Item>
+              <Menu.Item key="10">KPI cá nhân</Menu.Item>
             </SubMenu>
           </Menu>
         
