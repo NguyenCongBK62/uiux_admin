@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import './CommandWork.css';
-import { Table, Row, Col, Input, Button, Space, Tag, Modal } from 'antd';
+import { Table, Row, Col, Input, Button, Space, Tag } from 'antd';
 import Highlighter from 'react-highlight-words';
 import AddWork from './AddWork';
 import FixWork from './FixWork';
 import ViewWork from './ViewWork';
-import { DeleteOutlined, EyeOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
+import { DeleteOutlined, SearchOutlined } from '@ant-design/icons';
+
+import './Commandwork.css';
 
 const data = [
   {
@@ -273,7 +274,7 @@ class CommandWork extends Component {
               <FixWork/>
             </Col>
             <Col span={8}>
-             <ViewWork/>
+              <ViewWork/>
             </Col>
             <Col span={8}>
               <span style={{color: 'red', fontSize: '18px', cursor: 'pointer'}}><DeleteOutlined /></span>

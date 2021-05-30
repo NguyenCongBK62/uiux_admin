@@ -29,7 +29,7 @@ const ViewWork = () => {
     return (
         <>
         <span style={{color: '#86eaa0', fontSize: '18px', cursor: 'pointer'}} onClick={showModal}><EyeOutlined /></span>
-        <Modal title="Sửa chuyền" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={1000}>
+        <Modal title="Sửa chuyền" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={1500}>
             <CrProLine/>
         </Modal>
         </>
