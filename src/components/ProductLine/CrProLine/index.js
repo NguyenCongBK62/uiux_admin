@@ -6,6 +6,7 @@ import { Tabs } from 'antd';
 
 import TabInfoPL from './components/TabInfoPL';
 import AssignCharge from './components/AssignCharge';
+import Diagram from './components/Diagram';
 
 const { TabPane } = Tabs;
 

@@ -49,6 +49,9 @@ ReactDOM.render(
               <Menu.Item key="5">
                 <Link to="/proline-table">Bảng quản lý</Link>
               </Menu.Item>
+              {/* <Menu.Item key="6">
+                <Link to="/create-proline">Tạo chuyền</Link>
+              </Menu.Item> */}
             </SubMenu>
             <SubMenu key="sub3" icon={<NotificationOutlined />} title="Theo dõi KPI">
               <Menu.Item key="9">

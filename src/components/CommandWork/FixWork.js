@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import {
     Modal,
     Form,
-    Button,
     Select,
     DatePicker,
     InputNumber,
 } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 
 
 
-
-const AddWork = () => {
+const FixWork = () => {
     const [form] = Form.useForm();
     
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -31,10 +30,8 @@ const AddWork = () => {
 
     return (
         <>
-        <Button type="primary" onClick={showModal}>
-            Thêm lệnh sản xuất
-        </Button>
-        <Modal title="Thêm lệnh sản xuất" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <span style={{color: '86eaa0', fontSize: '18px', cursor: 'pointer'}} onClick={showModal}><EditOutlined /></span>
+        <Modal title="Sửa lệnh" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <Form
                 labelCol={{
                 span: 6,
@@ -82,4 +79,4 @@ const AddWork = () => {
     );
 };
 
-export default AddWork;
+export default FixWork;
