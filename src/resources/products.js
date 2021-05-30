@@ -15,6 +15,14 @@ export const products = [
         id: 4,
         name: 'Quần thể dục HANU'
     },
+    {
+        id: 5,
+        name: 'Áo cộc bách khoa'
+    },
+    {
+        id: 6,
+        name: 'Quần thể dục bách khoa'
+    },
 ];
 
 export const prod_units = [

@@ -1,37 +1,102 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
-import BpmnJS from "bpmn-js/lib/Modeler";
-
-import "bpmn-js/dist/assets/diagram-js.css";
-
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 import "../style.css";
+import {
+    Row,
+    Col
+} from 'antd';
 
-import diagram from "../resources/newDiagram.bpmn";
+import {
+    ArrowRightOutlined
+} from '@ant-design/icons';
 
 const Diagram = () => {
 
-    useEffect(() => {
-        const container = document.getElementById("diagram");
-        let viewer = new BpmnJS({
-            container,
-            keyboard: {
-                bindTo: document
-            }
-        });
-        
-        viewer
-        .importXML(diagram)
-        .then(() => {
-            const canvas = viewer.get("canvas");
+    const [inFrame, setInFrame] = useState(null);
+    const [index, setIndex] = useState(0);
 
-            canvas.zoom("fit-viewport");
-        })
-        .catch((err) => console.log(err));
-    }, []);
+    const addInFrame = (type) => {
+        const frames = inFrame || [];
+        let frame = null;
+        
+        switch (type) {
+            case 1:
+                frame = (
+                    <Col key={index}>
+                        <div className="circle_1" />
+                    </Col>
+                );
+                break;
+            case 2:
+                frame = (
+                    <Col style={{display: 'flex'}} key={index}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="circle_2" />
+                    </Col>
+                );
+                break;
+            case 3:
+                frame = (
+                    <Col style={{display: 'flex'}} key={index}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <input type="text" id="rectangle_if" />
+                    </Col>
+                );
+                break;
+            default:
+                break;
+        }
+
+        if (frames.length === 21){
+            frame = (
+                <Col style={{display: 'flex'}} key={index}>
+                    <div className="center_me">
+                        <ArrowRightOutlined style={{fontSize: '38px'}} />
+                    </div>
+                    <div className="circle_2" />
+                </Col>
+            );
+            
+            frames.push(frame);
+            setIndex(index+1);
+            setInFrame(frames);
+            return;
+        } else if (frames.length === 22){
+            return;
+        }
+
+        frames.push(frame);
+        setIndex(index+1);
+        setInFrame(frames);
+    }
 
     return (
-        <div id="diagram" style={{'height':'60vh', 'marginTop':'100'}}></div>
+        <div id="diagram">
+            <div className="table_dia">
+                <p style={{fontWeight: 'bold'}} >Khung chọn</p>
+                <hr/>
+                <div className="circle_1" onClick={() => {addInFrame(1);}} />
+                <div className="circle_2" onClick={() => {addInFrame(2);}} />
+                <div id="rectangle" onClick={() => {addInFrame(3);}} />
+            </div>
+            <div className="frame" style={{height: '95%'}} >
+                <div className="inner">Khung chuyền</div>
+                <div className="vertical-line"></div>
+                <Row className="in_frame">
+                    {
+                        !inFrame? ''
+                        :
+                        inFrame.map((item) => {
+                            return item;
+                        })
+                    }
+                </Row>
+            </div>
+        </div>
     );
 }
 

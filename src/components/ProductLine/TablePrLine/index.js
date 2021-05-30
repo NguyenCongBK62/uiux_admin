@@ -17,11 +17,24 @@ import {
 } from '@ant-design/icons'
 
 import CrProLine from '../CrProLine';
+import { prod_lines } from '../../../resources/product_lines';
 
 const columns = [
     {
         title: 'Mã hàng',
         dataIndex: 'code',
+    },
+    {
+        title: 'Tên mặt hàng',
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a, b) => a.name.length - b.name.length,
+        sortDirections: ['descend', 'ascend'],
+    },
+    {
+        title: 'Đơn vị thực hiện',
+        dataIndex: 'pro_unit',
+        key: 'pro_unit',
         filters: [
             {
                 text: 'HCI_01',
@@ -37,19 +50,7 @@ const columns = [
             },
         ],
         filterMultiple: false,
-        onFilter: (value, record) => record.code.indexOf(value) === 0,
-    },
-    {
-        title: 'Tên mặt hàng',
-        dataIndex: 'name',
-        key: 'name',
-        sorter: (a, b) => a.name.length - b.name.length,
-        sortDirections: ['descend', 'ascend'],
-    },
-    {
-        title: 'Đơn vị thực hiện',
-        dataIndex: 'pro_unit',
-        key: 'pro_unit',
+        onFilter: (value, record) => record.pro_unit.indexOf(value) === 0,
         sorter: (a, b) => a.pro_unit.length - b.pro_unit.length,
         sortDirections: ['descend', 'ascend'],
     },
@@ -65,44 +66,23 @@ const columns = [
         sorter: (a, b) => a.num_worker - b.num_worker,
         sortDirections: ['descend', 'ascend'],
     },
-]
-
-const data = [
     {
-        key: '1',
-        code: '1249a21',
-        name: 'Áo khoác HANU',
-        time: 3603,
-        pro_unit: 'HCI_01',
-        num_worker: 20
+        title: 'Ngày tạo',
+        dataIndex: 'date_crd',
+        sorter: (a, b) => a.date_crd.length - b.date_crd.length,
+        sortDirections: ['descend', 'ascend'],
     },
-    {
-        key: '2',
-        code: '1549v21',
-        name: 'Áo cộc bách khoa',
-        time: 3609,
-        pro_unit: 'HCI_07',
-        num_worker: 25,
-    },
-    {
-        key: '3',
-        code: '1248v22',
-        name: 'Quần thể dục bách khoa',
-        time: 3606,
-        pro_unit: 'HCI_05',
-        num_worker: 30
-    }
 ]
 
 const index = () => {
 
     const [isVisible, setIsVisible] = useState(false);
-    const [dataset, setDataset] = useState(data);
+    const [dataset, setDataset] = useState(prod_lines);
     const [id, setID] = useState(null);
 
     useEffect(() => {
         const setProductLine = () => {
-            localStorage.setItem('products', JSON.stringify(data));
+            localStorage.setItem('products', JSON.stringify(prod_lines));
             columns.push(
                 {
                     title: 'Hành động',
@@ -146,18 +126,18 @@ const index = () => {
     }
 
     const deleteProLine = (id) => {
-        const index = data.findIndex(item => item.key === id);
+        const index = prod_lines.findIndex(item => item.key === id);
         if (index !== -1) {
-            data.splice(index, 1);
+            prod_lines.splice(index, 1);
 
-            setDataset([...data]);
+            setDataset([...prod_lines]);
         }
     }
     
     return (
         <div className="table">
             <Card 
-            title={`Bảng thông tin chuyển`}
+            title={`Bảng thông tin chuyền`}
             extra={
                 <Button 
                     type="primary" shape="round" 

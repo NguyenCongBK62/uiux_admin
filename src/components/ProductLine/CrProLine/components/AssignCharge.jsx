@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/heading-has-content */
-import React from 'react';
+import React, { useState }from 'react';
 
 import {
     Row,
@@ -10,7 +10,7 @@ import {
     Tag,
 } from 'antd'
 
-import DrawViewered from './DrawViewered';
+import Diagram from './Diagram';
 
 import { persons } from '../../../../resources/persons';
 import { devices, garment_materials } from '../../../../resources/products';
@@ -19,6 +19,8 @@ import { devices, garment_materials } from '../../../../resources/products';
 const { Option } = Select;
 
 const AssignCharge = () => {
+
+    const [input, setInput] = useState(null);
 
     const onFinish = (values) => {
         console.log(values)
@@ -47,7 +49,7 @@ const AssignCharge = () => {
         <Row>
             <Col span={16}>
                 {/* Khung chuoi cong viec */}
-                <DrawViewered />
+                <Diagram value={input} />
             </Col>
             <Col span={1} offset={1}>
                 <div className="vertical-line"></div>
@@ -64,7 +66,7 @@ const AssignCharge = () => {
                             },
                         ]}
                     >
-                        <Input placeholder={`Nhập tên công việc`} defaultValue={``} />
+                        <Input placeholder={`Nhập tên công việc`} defaultValue={``} onChange={(value)=>{setInput(value);}} />
                     </Form.Item>
                     <Form.Item
                         name='time_work'

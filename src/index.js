@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Layout, Menu } from 'antd';
-import { PieChartOutlined, UserOutlined, LaptopOutlined, NotificationOutlined, SnippetsOutlined } from '@ant-design/icons';
+import { PieChartOutlined, UserOutlined, SettingOutlined, NotificationOutlined, SnippetsOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import 'antd/dist/antd.css';
 import Logo from './logo.jpeg';
@@ -40,24 +40,26 @@ ReactDOM.render(
             <Menu.Item key="0" icon={<PieChartOutlined />}>
               <Link to="/">Dash Board</Link>
             </Menu.Item>
-            <SubMenu key="sub1" icon={<SnippetsOutlined />} title="Quản lí công việc">
+            <SubMenu key="sub1" icon={<SnippetsOutlined />} title="Quản lí lệnh">
               <Menu.Item key="1">
                 <Link to="/commandwork">Lệnh sản xuất</Link>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<LaptopOutlined />} title="Quản lý chuyền">
+            <SubMenu key="sub2" icon={<SettingOutlined />} title="Quản lý chuyền">
               <Menu.Item key="5">
                 <Link to="/proline-table">Bảng quản lý</Link>
               </Menu.Item>
-              {/* <Menu.Item key="6">
-                <Link to="/create-proline">Tạo chuyền</Link>
-              </Menu.Item> */}
             </SubMenu>
-            <SubMenu key="sub3" icon={<NotificationOutlined />} title="Quản lý KPI">
+            <SubMenu key="sub3" icon={<NotificationOutlined />} title="Theo dõi KPI">
               <Menu.Item key="9">
-                <Link to="/kpi">KPI tổ chức</Link>
+                <Link to="/kpi_group">KPI tổ chức</Link>
               </Menu.Item>
-              <Menu.Item key="10">KPI cá nhân</Menu.Item>
+              <Menu.Item key="10">
+                <Link to="/kpi_customer">KPI cá nhân</Link>
+              </Menu.Item>
+              <Menu.Item key="11">
+                <Link to="/kpi_prline">KPI dây chuyền</Link>
+              </Menu.Item>
             </SubMenu>
           </Menu>
         
