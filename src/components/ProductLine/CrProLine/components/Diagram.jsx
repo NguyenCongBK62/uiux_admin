@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react';
 
 import "../style.css";
@@ -10,12 +11,35 @@ import {
     ArrowRightOutlined
 } from '@ant-design/icons';
 
-const Diagram = () => {
+const Diagram = (props) => {
 
     const [inFrame, setInFrame] = useState(null);
     const [index, setIndex] = useState(0);
+    const [works, setWorks] = useState([]);
 
-    const addInFrame = (type) => {
+    const handleChange = (index, value) => {
+        let list = works;
+
+        if (list.length === 0) {
+            list.push({ index: index, value: value });
+        } else {
+            const obs = list.findIndex(item => item.index === index);
+            if (obs !== -1) {
+                list[obs] = {
+                    ...list[obs],
+                    value: value,
+                }
+            } else {
+                list.push({ index: index, value: value });
+            }
+        }
+        
+        setWorks(list);
+
+        props.onChange(list);
+    }
+
+    const addInFrame = (type, inValue) => {
         const frames = inFrame || [];
         let frame = null;
         
@@ -43,7 +67,7 @@ const Diagram = () => {
                         <div className="center_me">
                             <ArrowRightOutlined style={{fontSize: '38px'}} />
                         </div>
-                        <input type="text" id="rectangle_if" />
+                        <input type="text" id="rectangle_if" value={inValue} onChange={(event)=>{handleChange(index, event.target.value)}} />
                     </Col>
                 );
                 break;

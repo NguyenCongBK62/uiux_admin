@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 
 import {  
@@ -17,47 +18,44 @@ const { Option } = Select;
 
 const TabInfoPL = (props) => {
 
-    const [requiredMark, setRequiredMarkType] = useState('optional');
     const [product, setProduct] = useState({
-        name: null,
-        time: '',
-        workers: '',
-        pro_unit: null,
-        note: '',
+        key: 4,
+        code: '1248v24',
+        name: 'Quần thể dục bách khoa',
+        time: 3500,
+        pro_unit: 'HCI_08',
+        date_crd: '29-05-2021',
+        num_worker: 10,
+        note: 'Nhớ xem hướng dẫn'
     });
-
-    const onRequiredTypeChange = ({ requiredMarkValue }) => {
-        setRequiredMarkType(requiredMarkValue);
-    };
-
-    const onFinish = (values) => {
-        console.log(values)
-    }
-
+    
     useEffect(() => {
-        if (props.product) {
-            console.log(props.product)
-            setProduct({
-                ...props.product, 
-                name: props.product.name,
-                time: props.product.time,
-                workers: props.product.num_worker,
-                pro_unit: props.product.code,
-                note: 'Lien he voi quan ly kho'
-            });
+        const getInfo = () => {
         }
-    }, [props]);
+
+        getInfo();
+    }, []);
 
     return (
-        <Form onFinish={onFinish} layout="vertical" 
-            initialValues={{
-                requiredMarkValue: requiredMark,
-            }}
-            onValuesChange={onRequiredTypeChange}
-            requiredMark={requiredMark}
-        >
+        <Form layout="vertical" >
             <Row>
                 <Col span={12}>
+                <Form.Item
+                        name={`code`}
+                        label={`Mã cho chuyền`}
+                        rules={[
+                            {
+                                required: true,
+                                type:'string'
+                            },
+                        ]}
+                        
+                    >
+                        <Input 
+                            placeholder="Nhập mã cho dây chuyền" 
+                            defaultValue={product.code}
+                        />
+                    </Form.Item>
                     <Form.Item
                         name={`name`}
                         label={`Sản phẩm`}
@@ -91,7 +89,6 @@ const TabInfoPL = (props) => {
                         rules={[
                             {
                                 required: true,
-                                type:'number'
                             },
                         ]}
                         
@@ -107,14 +104,13 @@ const TabInfoPL = (props) => {
                         rules={[
                             {
                                 required: true,
-                                type: 'number'
                             },
                         ]}
                         
                     >
                         <Input 
                             placeholder="Nhập số người cần tham gia" 
-                            defaultValue={product.workers}
+                            defaultValue={product.num_worker}
                         />
                     </Form.Item>
                 </Col>

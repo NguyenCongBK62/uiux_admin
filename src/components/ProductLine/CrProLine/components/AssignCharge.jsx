@@ -10,7 +10,7 @@ import {
     Tag,
 } from 'antd'
 
-import Diagram from './Diagram';
+import Diagram from './DrawViewered';
 
 import { persons } from '../../../../resources/persons';
 import { devices, garment_materials } from '../../../../resources/products';
@@ -18,9 +18,16 @@ import { devices, garment_materials } from '../../../../resources/products';
 
 const { Option } = Select;
 
-const AssignCharge = () => {
+const AssignCharge = (props) => {
 
-    const [input, setInput] = useState(null);
+    const [diagram, setDiagram] = useState({
+        name_work: 'May quần dài',
+        time_work: '3500',
+        weight_work: '5.4',
+        person_works: ['HCI_03-Bùi Như Phú', 'HCI_03-Nguyễn Tùng Lâm', 'HCI_05-Đỗ Đức Thuận'],
+        device_works: ['Máy cắt rập', 'Máy cắt vải tự động', 'Máy dò kim'],
+        resource_works: ['Vải cotton'],
+    });
 
     const onFinish = (values) => {
         console.log(values)
@@ -49,7 +56,7 @@ const AssignCharge = () => {
         <Row>
             <Col span={16}>
                 {/* Khung chuoi cong viec */}
-                <Diagram value={input} />
+                <Diagram id={props.id} />
             </Col>
             <Col span={1} offset={1}>
                 <div className="vertical-line"></div>
@@ -66,7 +73,7 @@ const AssignCharge = () => {
                             },
                         ]}
                     >
-                        <Input placeholder={`Nhập tên công việc`} defaultValue={``} onChange={(value)=>{setInput(value);}} />
+                        <Input placeholder={`Nhập tên công việc`} defaultValue={`${diagram.name_work}`} />
                     </Form.Item>
                     <Form.Item
                         name='time_work'
@@ -77,7 +84,7 @@ const AssignCharge = () => {
                             },
                         ]}
                     >
-                        <Input placeholder={`Nhập thời gian theo giây`} defaultValue={``} />
+                        <Input placeholder={`Nhập thời gian theo giây`} defaultValue={`${diagram.time_work}`} />
                     </Form.Item>
                     <Form.Item
                         name='weight_work'
@@ -88,7 +95,7 @@ const AssignCharge = () => {
                             },
                         ]}
                     >
-                        <Input placeholder={`Nhập tải trọng`} defaultValue={``} />
+                        <Input placeholder={`Nhập tải trọng`} defaultValue={`${diagram.weight_work}`} />
                     </Form.Item>
                     <Form.Item
                         name='person_works'
@@ -106,6 +113,7 @@ const AssignCharge = () => {
                             showArrow
                             tagRender={tagRender}
                             placeholder="Chọn người tham gia"
+                            defaultValue={diagram.person_works}
                             optionFilterProp="children"
                             filterOption={(input, option) =>
                                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -132,6 +140,7 @@ const AssignCharge = () => {
                             mode="multiple"
                             allowClear
                             showArrow
+                            defaultValue={diagram.device_works}
                             tagRender={tagRender}
                             placeholder="Chọn dụng cụ"
                             optionFilterProp="children"
@@ -161,6 +170,7 @@ const AssignCharge = () => {
                             allowClear
                             showArrow
                             tagRender={tagRender}
+                            defaultValue={diagram.resource_works}
                             placeholder="Chọn nguyên liệu"
                             optionFilterProp="children"
                             filterOption={(input, option) =>

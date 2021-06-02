@@ -7,6 +7,8 @@ import DashBoard from './components/DashBoard/DashBoard';
 import KPIGroup from './components/KPI/KPIGroup/KPIGroup';
 import KPIProductLine from './components/KPI/KPIProductLine';
 import KPICustoms from './components/KPI/KPICustoms';
+import PersonTable from './components/Person/Table';
+import PersonSignup from './components/Person/Signup';
 
 import {
   Switch,
@@ -82,6 +84,28 @@ function App() {
             </Breadcrumb>
             {/* Chỗ này là component */}
             <KPIProductLine />
+          </Route>
+          <Route path='/person-table'>
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>
+                <Link to="/">Admin</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                Bảng quản lý nhân viên
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            <PersonTable />
+          </Route>
+          <Route path='/person-signup'>
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>
+                <Link to="/">Admin</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                Đăng ký nhân viên
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            <PersonSignup />
           </Route>
         </Switch>
       </div>

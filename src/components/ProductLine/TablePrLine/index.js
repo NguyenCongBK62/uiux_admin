@@ -6,7 +6,6 @@ import {
     Table, 
     Card,
     Button,
-    Modal
 } from 'antd'
 
 import {
@@ -17,6 +16,8 @@ import {
 } from '@ant-design/icons'
 
 import CrProLine from '../CrProLine';
+import ModalStep1 from './components/ModalStep1';
+import ModalStep2 from './components/ModalStep2';
 import { prod_lines } from '../../../resources/product_lines';
 
 const columns = [
@@ -76,8 +77,12 @@ const columns = [
 
 const index = () => {
 
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisibleStep1, setIsVisibleStep1] = useState(false);
+    const [isVisibleStep2, setIsVisibleStep2] = useState(false);
+    const [isVisibleCR, setIsVisibleCR] = useState(false);
     const [dataset, setDataset] = useState(prod_lines);
+    const [maxKey, setMaxKey] = useState(prod_lines[prod_lines.length-1].key);
+    const [productItem, setProduct] = useState(null);
     const [id, setID] = useState(null);
 
     useEffect(() => {
@@ -112,17 +117,51 @@ const index = () => {
         setProductLine();
     }, []);
 
+    const handleSave = (product) => {
+        product = {...product, key: maxKey +1};
+        setProduct(product);
+        setIsVisibleStep1(false);
+        setIsVisibleStep2(true);
+    }
+
+    const handleSaveStep2 = (works) => {
+        let work = {...works};
+        work = {...works, prd_id: productItem.key};
+
+        const listWork = [];
+        const products = dataset;
+
+        listWork.push(work);
+        products.push(productItem);
+
+        localStorage.setItem('products', JSON.stringify(products));
+        localStorage.setItem('listWork', JSON.stringify(listWork));
+
+        setMaxKey(maxKey + 1);
+        setDataset([...products]);
+        setIsVisibleStep2(false);
+    }
+
     const handleChange = (pagination, sorter) => {
         console.log('Various parameters', pagination, sorter);
     };
 
     const toggleModal = () => {
-        setIsVisible(!isVisible);
+        setIsVisibleStep1(!isVisibleStep1);
+    }
+
+    const toggleModalStep2 = () => {
+        setIsVisibleStep2(!isVisibleStep2);
+
+    }
+
+    const toggleModalCR = () => {
+        setIsVisibleCR(!isVisibleCR);
     }
 
     const seenProLine = (id) => {
         setID(id);
-        toggleModal();
+        setIsVisibleCR(true);
     }
 
     const deleteProLine = (id) => {
@@ -130,6 +169,7 @@ const index = () => {
         if (index !== -1) {
             prod_lines.splice(index, 1);
 
+            localStorage.setItem('products', JSON.stringify(prod_lines));
             setDataset([...prod_lines]);
         }
     }
@@ -147,16 +187,9 @@ const index = () => {
             } 
         >
             <Table columns={columns} dataSource={dataset} onChange={handleChange} />
-            <Modal 
-                title="Thêm mới chuyền" 
-                visible={isVisible} 
-                onOk={toggleModal} 
-                onCancel={toggleModal}
-                centered
-                width={1200}
-            >
-                <CrProLine id={id} />
-            </Modal>
+            <ModalStep1 isVisibleStep1={isVisibleStep1} handleSave={handleSave} handleCancel={toggleModal} />
+            <ModalStep2 isVisibleStep2={isVisibleStep2} handleSaveStep2={handleSaveStep2} handleCancelStep2={toggleModalStep2} />
+            <CrProLine isVisibleCR={isVisibleCR} id={id} closeModal={toggleModalCR} />
         </Card>
         </div>
     );

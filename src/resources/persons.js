@@ -33,11 +33,11 @@ export const persons = [
     },
     {
         id: 9 ,
-        name: 'HCI_02-Nguyễn Quốc	Vương'
+        name: 'HCI_02-Nguyễn Quốc Vương'
     },
     {
         id: 10 ,
-        name: 'HCI_03-Nguyễn Trung	Thành'
+        name: 'HCI_03-Nguyễn Trung Thành'
     },
     {
         id: 11 ,

@@ -5,7 +5,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Layout, Menu } from 'antd';
-import { PieChartOutlined, UserOutlined, SettingOutlined, NotificationOutlined, SnippetsOutlined } from '@ant-design/icons';
+import { 
+  PieChartOutlined, 
+  UserOutlined, 
+  SettingOutlined, 
+  NotificationOutlined,
+  AreaChartOutlined, 
+  SnippetsOutlined, 
+  SolutionOutlined 
+} from '@ant-design/icons';
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import 'antd/dist/antd.css';
 import Logo from './logo.jpeg';
@@ -53,7 +61,7 @@ ReactDOM.render(
                 <Link to="/create-proline">Tạo chuyền</Link>
               </Menu.Item> */}
             </SubMenu>
-            <SubMenu key="sub3" icon={<NotificationOutlined />} title="Theo dõi KPI">
+            <SubMenu key="sub3" icon={<AreaChartOutlined />} title="Theo dõi KPI">
               <Menu.Item key="9">
                 <Link to="/kpi_group">KPI tổ chức</Link>
               </Menu.Item>
@@ -62,6 +70,14 @@ ReactDOM.render(
               </Menu.Item>
               <Menu.Item key="11">
                 <Link to="/kpi_prline">KPI dây chuyền</Link>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub5" icon={<SolutionOutlined />} title="Quản lý nhân sự">
+              <Menu.Item key="7">
+                <Link to="/person-table">Bảng quản lý</Link>
+              </Menu.Item>
+              <Menu.Item key="8">
+                <Link to="/person-signup">Đăng ký nhân viên</Link>
               </Menu.Item>
             </SubMenu>
           </Menu>

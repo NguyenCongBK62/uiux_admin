@@ -2,42 +2,42 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from 'react';
 
-import { Tabs } from 'antd';
+import { 
+    Tabs,
+    Modal, 
+} from 'antd';
 
 import TabInfoPL from './components/TabInfoPL';
 import AssignCharge from './components/AssignCharge';
-import Diagram from './components/Diagram';
 
 const { TabPane } = Tabs;
 
 const index = (props) => {
 
-    const { id } = props;
-
-    const [product, setProduct] = useState(null);
-
-    useEffect(() => {
-        const getInfo = () => {
-            const products = JSON.parse(localStorage.getItem('products')) || [];
-            if (products.length > 0 && id) {
-                let info = products.find(item => item.key === id);
-                console.log(info);
-                setProduct(info);
-            }
-        }
-
-        getInfo();
-    }, [id])
+    const { id, isVisibleCR } = props;
 
     return (
-        <Tabs type="card">
-            <TabPane tab={`Thông tin cơ bản`} key={1}>
-                <TabInfoPL product={product} />
-            </TabPane>
-            <TabPane tab={`Thiết kế chuỗi công việc`} key={2}>
-                <AssignCharge id={id} />
-            </TabPane>
-        </Tabs>
+        <div>
+            <Modal
+                title="Thêm mới chuyền" 
+                visible={isVisibleCR} 
+                onOk={
+                    props.handleSave
+                } 
+                onCancel={props.closeModal}
+                centered
+                width={1200}
+            >
+                <Tabs type="card">
+                    <TabPane tab={`Thông tin cơ bản`} key={1}>
+                        <TabInfoPL id={id} />
+                    </TabPane>
+                    <TabPane tab={`Thiết kế chuỗi công việc`} key={2}>
+                        <AssignCharge id={id} />
+                    </TabPane>
+                </Tabs>
+            </Modal>
+        </div>
     );
 }
 
