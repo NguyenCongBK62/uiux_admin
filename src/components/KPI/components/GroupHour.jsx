@@ -1,6 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-undef */
 /* eslint-disable array-callback-return */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import moment from 'moment';
 import { Input, DatePicker, Button, Select, Row, Col } from 'antd';
 import { Line } from '@ant-design/charts';
 
@@ -9,12 +12,18 @@ import { kpi_group_hours } from '../../../resources/kpi';
 const { Option } = Select;
 
 const GroupHour = () => {
+    const dateFormat = 'YYYY-MM-DD';
 
     const [config, setConfig] = useState(null);
-    const [group, setGroup] = useState(null);
-    const [date, setDate] = useState(null);
+    const [group, setGroup] = useState(`HCI_07`);
+    const [date, setDate] = useState(`2021-05-29`);
     const [error, setError] = useState(null);
 
+    useEffect(()=>{
+        setDate(`2021-05-29`);
+        setGroup(`HCI_07`);
+        setForm();
+    },[]);
 
     const setForm = () => {
         const err = {};
@@ -75,12 +84,12 @@ const GroupHour = () => {
     }
 
     return (
-        <div style={{marginBottom: '10px'}}>
+        <div className="chart-team">
             <Row>
                 <Col span={10}>
                     <Input.Group compact>
                         <p style={{float: 'left', paddingTop: '3px', fontSize: '16px', marginRight: '7px'}}>Chọn ngày:  </p>
-                        <DatePicker style={{ width: '40%', float: 'left'}} onChange={(date, dateString)=>{setDate(dateString)}} />
+                        <DatePicker defaultValue={moment('2021-05-29', dateFormat)} style={{ width: '40%', float: 'left'}} onChange={(date, dateString)=>{setDate(dateString)}} />
                         <p style={{paddingTop: '3px', fontSize: '12px', marginRight: '7px', color:'red'}}>{error?.date? error.date : '' }</p>
                     </Input.Group>
                 </Col>
@@ -92,6 +101,7 @@ const GroupHour = () => {
                             placeholder="Select a group"
                             optionFilterProp="children"
                             showSearch
+                            defaultValue={`HCI_07`}
                             filterOption={(input, option) =>
                                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                             }

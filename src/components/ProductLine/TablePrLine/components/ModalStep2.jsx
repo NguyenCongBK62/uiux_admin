@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState , useEffect }from 'react';
 
 import {
     Modal,
@@ -19,7 +19,7 @@ const { Option } = Select;
 
 const ModalStep2 = (props) => {
 
-    const [diagram, setDiagram] = useState({
+    const [diagram, setDiagram] = useState(props.diagram? props.diagram:{
         name_work: '',
         time_work: '',
         weight_work: '',
@@ -57,9 +57,13 @@ const ModalStep2 = (props) => {
     }
 
     const handleSave = () => {
-        props.handleSaveStep2(diagram);
+        if (!diagram.prd_id) {
+            props.handleSaveStep2(diagram);
+        } else {
+            props.handleEdit(diagram);
+        }
     }
-
+    console.log(diagram);
     return (
         <div>
             <Modal
@@ -82,7 +86,7 @@ const ModalStep2 = (props) => {
             >
                 <Row>
                     <Col span={16}>
-                        <Diagram onChange={onhandleChange} />
+                        <Diagram works={diagram.works} onChange={onhandleChange} />
                     </Col>
                     <Col span={1} offset={1}>
                         <div className="vertical-line"></div>
@@ -101,7 +105,7 @@ const ModalStep2 = (props) => {
                             >
                                 <Input 
                                     placeholder={`Nhập tên công việc`} 
-                                    defaultValue={``} 
+                                    defaultValue={diagram.name_work} 
                                     onChange={(event)=>{setDiagram({...diagram, name_work: event.target.value});}}
                                 />
                             </Form.Item>
@@ -116,7 +120,7 @@ const ModalStep2 = (props) => {
                             >
                                 <Input 
                                     placeholder={`Nhập thời gian theo giây`} 
-                                    defaultValue={``} 
+                                    defaultValue={diagram.time_work} 
                                     onChange={(event)=>{setDiagram({...diagram, time_work: event.target.value});}}
                                 />
                             </Form.Item>
@@ -131,7 +135,7 @@ const ModalStep2 = (props) => {
                             >
                                 <Input 
                                     placeholder={`Nhập tải trọng`} 
-                                    defaultValue={``} 
+                                    defaultValue={diagram.weight_work}
                                     onChange={(event)=>{setDiagram({...diagram, weight_work: event.target.value});}}
                                 />
                             </Form.Item>
@@ -151,6 +155,7 @@ const ModalStep2 = (props) => {
                                     showArrow
                                     tagRender={tagRender}
                                     placeholder="Chọn người tham gia"
+                                    defaultValue={diagram.person_works}
                                     onChange={(value)=>{ setDiagram({...diagram, person_works: value}); }}
                                     optionFilterProp="children"
                                     filterOption={(input, option) =>
@@ -181,6 +186,7 @@ const ModalStep2 = (props) => {
                                     tagRender={tagRender}
                                     onChange={(value)=>{ setDiagram({...diagram, device_works: value}); }}
                                     placeholder="Chọn dụng cụ"
+                                    defaultValue={diagram.device_works}
                                     optionFilterProp="children"
                                     filterOption={(input, option) =>
                                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -210,6 +216,7 @@ const ModalStep2 = (props) => {
                                     tagRender={tagRender}
                                     onChange={(value)=>{ setDiagram({...diagram, resource_works: value}); }}
                                     placeholder="Chọn nguyên liệu"
+                                    defaultValue={diagram.resource_works}
                                     optionFilterProp="children"
                                     filterOption={(input, option) =>
                                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0

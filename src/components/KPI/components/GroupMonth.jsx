@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 
-import { Input, Button, Select, Row, Col } from 'antd';
+import { Input, Select, Row, Col } from 'antd';
 import { Column } from '@ant-design/charts';
 
 import { kpi_group_months } from '../../../resources/kpi';
@@ -11,15 +11,17 @@ const { Option } = Select;
 const GroupHour = () => {
 
     const [config, setConfig] = useState(null);
-    const [group, setGroup] = useState(null);
     const [error, setError] = useState(null);
 
+    useEffect(()=>{
+        setForm('HCI_06');
+    }, []);
 
-    const setForm = () => {
+    const setForm = (value) => {
         const err = {};
 
         const gr_month = kpi_group_months.find((item) => {
-            if (item.group === group) {
+            if (item.group === value) {
                 return item;
             }
         });
@@ -51,6 +53,10 @@ const GroupHour = () => {
         setError(null);
     }
 
+    const seenKPI = (value) => {
+        setForm(value);
+    }
+
     return (
         <div style={{marginBottom: '10px'}}>
             <Row>
@@ -61,11 +67,12 @@ const GroupHour = () => {
                             style={{ width: '40%', marginBottom: '1rem', float: 'left'}}
                             placeholder="Select a group"
                             optionFilterProp="children"
+                            defaultValue={`HCI_06`}
                             showSearch
                             filterOption={(input, option) =>
                                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                             }
-                            onChange={(value)=>{setGroup(value)}}
+                            onChange={(value)=>{seenKPI(value);}}
                         >
                             <Option value="HCI_01">HCI_01</Option>
                             <Option value="HCI_02">HCI_02</Option>
@@ -78,16 +85,6 @@ const GroupHour = () => {
                         </Select>
                         <p style={{paddingTop: '3px', fontSize: '12px', marginRight: '7px', color: 'red'}}>{error?.group? error.group : '' }</p>
                     </Input.Group>
-                </Col>
-                <Col span={4}>
-                <Input.Group compact>
-                    <Button 
-                        type="primary"
-                        onClick={setForm}
-                    >
-                        Duyệt
-                    </Button>
-                </Input.Group>
                 </Col>
             </Row>
             {!config? (error?.line? <p style={{fontSize: '20px'}}>{error.line}</p> : '') : <Column {...config} /> }
