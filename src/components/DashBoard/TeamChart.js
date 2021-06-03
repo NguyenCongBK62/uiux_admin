@@ -2,9 +2,13 @@ import React from 'react';
 import './TeamChart.css';
 import { Input, DatePicker, Button, Select } from 'antd';
 import { Line } from '@ant-design/charts';
+import moment from 'moment';
+
 const { Option } = Select;
 
 const CompanyChart = () => {
+  const dateFormat = 'YYYY-MM-DD';
+
     const data = [
         {name: "Công", hour: '8h', amount: 0},
         {name: "Công", hour: '9h', amount: 23},
@@ -65,11 +69,12 @@ const CompanyChart = () => {
           },
         },
     };
+
     return (
         <div className='chart-team'>
             <Input.Group compact>
               <p style={{ width: '15%', float: 'left', paddingTop: '3px', fontSize: '16px'}}>Chọn ngày:</p>
-              <DatePicker style={{ width: '20%', float: 'left'}}/>
+              <DatePicker defaultValue={moment('2021-05-29', dateFormat)} style={{ width: '20%', float: 'left'}}/>
             </Input.Group>
             <br/>
             <Input.Group compact>

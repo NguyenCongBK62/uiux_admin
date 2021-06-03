@@ -4,11 +4,13 @@ import { Breadcrumb } from 'antd';
 import CommandWork from './components/CommandWork/CommandWork';
 import TablePrLine from './components/ProductLine/TablePrLine';
 import DashBoard from './components/DashBoard/DashBoard';
+import CommandDetail from './components/CommandDetail/CommandDetail';
 import KPIGroup from './components/KPI/KPIGroup/KPIGroup';
 import KPIProductLine from './components/KPI/KPIProductLine';
 import KPICustoms from './components/KPI/KPICustoms';
 import PersonTable from './components/Person/Table';
 import PersonSignup from './components/Person/Signup';
+import ProductLineDetail from './components/ProductLineDetail/ProductLineDetail';
 
 import {
   Switch,
@@ -37,6 +39,24 @@ function App() {
               </Breadcrumb.Item>
             </Breadcrumb>
             <CommandWork/>
+          </Route>
+          <Route path='/commanddetail'>
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>Admin</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/commanddetail">Chi tiết lệnh sản xuất</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            <CommandDetail/>
+          </Route>
+          <Route path='/productlinedetail'>
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>Admin</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link to="/productlinedetail">Chi tiết tiến độ chuyền</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            <ProductLineDetail/>
           </Route>
           <Route path='/proline-table'>
             <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>

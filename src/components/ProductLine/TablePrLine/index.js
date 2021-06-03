@@ -18,7 +18,7 @@ import {
 import CrProLine from '../CrProLine';
 import ModalStep1 from './components/ModalStep1';
 import ModalStep2 from './components/ModalStep2';
-import { prod_lines } from '../../../resources/product_lines';
+import { prod_lines, listWork } from '../../../resources/product_lines';
 
 const columns = [
     {
@@ -83,11 +83,22 @@ const index = () => {
     const [dataset, setDataset] = useState(prod_lines);
     const [maxKey, setMaxKey] = useState(prod_lines[prod_lines.length-1].key);
     const [productItem, setProduct] = useState(null);
-    const [id, setID] = useState(null);
+    const [diagram, setDiagram] = useState(null);
+
+    const [product, setProductt] = useState({
+        code: '',
+        name: null,
+        time: '',
+        date_crd: '',
+        num_worker: null,
+        pro_unit: null,
+        note: '',
+    });
 
     useEffect(() => {
         const setProductLine = () => {
             localStorage.setItem('products', JSON.stringify(prod_lines));
+            localStorage.setItem('listWork', JSON.stringify(listWork));
             columns.push(
                 {
                     title: 'Hành động',
@@ -102,7 +113,9 @@ const index = () => {
                             <EditTwoTone 
                                 style={{fontSize: '16px'}} 
                                 twoToneColor="#ffec3d" 
-                                onClick={() => { console.log("EyeTwoTone") }}
+                                onClick={() => {
+                                    seenProLineEdit(prl.key)
+                                }}
                             />&nbsp;&nbsp;
                             <DeleteTwoTone 
                                 style={{fontSize: '16px'}} 
@@ -147,21 +160,82 @@ const index = () => {
     };
 
     const toggleModal = () => {
+        setProductt(null);
+        setDiagram(null);
         setIsVisibleStep1(!isVisibleStep1);
     }
 
     const toggleModalStep2 = () => {
+        setProductt(null);
+        setDiagram(null);
         setIsVisibleStep2(!isVisibleStep2);
-
     }
 
     const toggleModalCR = () => {
+        setProductt(null);
+        setDiagram(null);
         setIsVisibleCR(!isVisibleCR);
     }
 
     const seenProLine = (id) => {
-        setID(id);
         setIsVisibleCR(true);
+    }
+
+    const seenProLineEdit = (id) => {
+        const list = JSON.parse(localStorage.getItem('products')) || [];
+            if (list.length > 0 && id) {
+                const productItem = list.find(item => item.key === id);
+                setProductt({
+                    key: productItem.key,
+                    code: productItem.code,
+                    name: productItem.name,
+                    time: productItem.time,
+                    date_crd: productItem.date_crd,
+                    num_worker: productItem.num_worker,
+                    pro_unit: productItem.pro_unit,
+                    note: productItem.note,
+                });
+            }
+        setIsVisibleStep1(true);
+    }
+
+    const editProductLine = (product_edit) => {
+        const list = JSON.parse(localStorage.getItem('products')) || [];
+        if (list.length > 0 && product.code) {
+            const index = list.findIndex(item => item.key === product_edit.key);
+            if (index !== -1) {
+                list[index] = {...product_edit};
+
+                setDataset([...list]);
+
+                localStorage.setItem('products', JSON.stringify(list));
+            }
+        }
+
+        const listWork = JSON.parse(localStorage.getItem('listWork')) || [];
+
+        if (listWork.length > 0) {
+            const dia = listWork.find(item => item.prd_id === 10);
+
+            setDiagram({...dia});
+        }
+        setIsVisibleStep1(false);
+        setIsVisibleStep2(true);
+    }
+
+    const editDiagram = (works) => {
+        const listWork = JSON.parse(localStorage.getItem('listWork')) || [];
+
+        if (listWork.length > 0 && diagram.prd_id) {
+            const index = listWork.findIndex(item => item.prd_id === 10);
+            if (index !== -1) {
+                listWork[index] = {...works};
+
+                localStorage.setItem('listWork', JSON.stringify(listWork));
+            }
+        }
+
+        setIsVisibleStep2(false);
     }
 
     const deleteProLine = (id) => {
@@ -187,9 +261,11 @@ const index = () => {
             } 
         >
             <Table columns={columns} dataSource={dataset} onChange={handleChange} />
-            <ModalStep1 isVisibleStep1={isVisibleStep1} handleSave={handleSave} handleCancel={toggleModal} />
-            <ModalStep2 isVisibleStep2={isVisibleStep2} handleSaveStep2={handleSaveStep2} handleCancelStep2={toggleModalStep2} />
-            <CrProLine isVisibleCR={isVisibleCR} id={id} closeModal={toggleModalCR} />
+            {
+                isVisibleStep1? <ModalStep1 isVisibleStep1={isVisibleStep1} handleEdit={editProductLine} handleSave={handleSave} handleCancel={toggleModal} product={product} /> :''
+            }
+            {isVisibleStep2?<ModalStep2 isVisibleStep2={isVisibleStep2} handleEdit={editDiagram} handleSaveStep2={handleSaveStep2} handleCancelStep2={toggleModalStep2} diagram={diagram} />:''}
+            {isVisibleCR?<CrProLine isVisibleCR={isVisibleCR} closeModal={toggleModalCR} />:''}
         </Card>
         </div>
     );

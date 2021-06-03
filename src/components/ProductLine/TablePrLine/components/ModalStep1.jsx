@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState }from 'react';
 
 import {
@@ -19,7 +20,7 @@ const { Option } = Select;
 
 const ModalStep1 = (props) => {
 
-    const [product, setProduct] = useState({
+    const [product, setProduct] = useState(props.product? props.product : {
         code: '',
         name: null,
         time: '',
@@ -33,7 +34,12 @@ const ModalStep1 = (props) => {
         var date = new Date();
         let item = product;
 
-        item = {...item, date_crd: date.toJSON()};
+        if (!item.key) {
+            item = {...item, date_crd: date.toJSON()};
+            props.handleSave(item);
+        } else {
+            props.handleEdit(item);
+        }
 
         setProduct({
             code: '',
@@ -44,8 +50,6 @@ const ModalStep1 = (props) => {
             pro_unit: null,
             note: '',
         });
-
-        props.handleSave(item);
     }
 
     return (
