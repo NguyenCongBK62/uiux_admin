@@ -45,3 +45,16 @@ export const prod_lines = [
         num_worker: 8
     },
 ];
+
+export const listWork = [
+    {
+        device_works: ["Máy dò kim", "Máy cắt vải"],
+        name_work: "May áo",
+        person_works: ["HCI_01-Nguyễn Viết Long", "HCI_01-Nguyễn Xuân Vinh", "HCI_02-Lê Hoàng Anh Trung", "HCI_02-Nguyễn Văn Dũng", "HCI_01-Lê Công Vinh"],
+        prd_id: 10,
+        resource_works: ["Vải kaki"],
+        time_work: "3400",
+        weight_work: "4",
+        works: [{index: 1, value: "May. tay ao"}, {index: 2, value: "May co ao"}]
+    }
+]
