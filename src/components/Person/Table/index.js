@@ -3,7 +3,7 @@ import { Table, Row, Col, Input, Button, Space, Tag } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { DeleteOutlined, SearchOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons';
 
-import '../../CommandWork/CommandWork.css';
+import '../../CommandWork/Commandwork.css';
 
 const data = [
   {

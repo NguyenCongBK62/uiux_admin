@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import './CommandWork.css';
-import { Table, Row, Col, Input, Button, Space, Tag, Progress } from 'antd';
+
+import { Table, Row, Col, Input, Button, Space, Progress } from 'antd';
 import Highlighter from 'react-highlight-words';
 import AddWork from './AddWork';
 import FixWork from './FixWork';
 import { DeleteOutlined, SearchOutlined, EyeOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import './Commandwork.css';
 
 
 

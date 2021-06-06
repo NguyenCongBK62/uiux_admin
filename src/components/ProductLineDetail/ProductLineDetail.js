@@ -5,7 +5,6 @@ import {
     Row, 
     Col,
     Form,
-    Select,
     InputNumber,
     Input,
 } from 'antd';
