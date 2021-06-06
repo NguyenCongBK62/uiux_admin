@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-
+import './CommandWork.css';
 import { Table, Row, Col, Input, Button, Space, Progress } from 'antd';
 import Highlighter from 'react-highlight-words';
 import AddWork from './AddWork';
 import FixWork from './FixWork';
 import { DeleteOutlined, SearchOutlined, EyeOutlined } from '@ant-design/icons';
+import StateCommand from './StateCommand';
 import { Link } from 'react-router-dom';
-import './Commandwork.css';
 
 
 
@@ -282,8 +282,9 @@ class CommandWork extends Component {
                   <AddWork/>
                 </Space>
             </Col>
-            <Table style={{width: '100%'}} columns={columns} dataSource={data} />
         </Row>
+        <StateCommand/>
+        <Table style={{width: '100%'}} columns={columns} dataSource={data} />
       </div>
     );
   }

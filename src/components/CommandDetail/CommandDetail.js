@@ -15,7 +15,7 @@ const CommandDetail = () => {
     return (
         <div className='command-detail'>
             <Row>
-                <Col span={13}>
+                <Col span={24}>
                     <div className='command-detail-title'>Chi tiết lệnh sản xuất</div>
                     <div className='command-detail-content'>
                         <Form
@@ -64,31 +64,6 @@ const CommandDetail = () => {
                                 <Input style={{width: '100%'}} defaultValue='70%'/>
                             </Form.Item>
                         </Form>
-                    </div>
-                </Col>
-                <Col span={11}>
-                    <div className='command-state-title'>Các trạng thái tương ứng trên thanh tiến trình</div>
-                    <div className='command-state-content'>
-                        <div className='state-1'>
-                            <div className='color-1'>1</div>
-                            <div className='state-content'>Đã hoàn thành lệnh sản xuất</div>
-                        </div>
-                        <div className='state-2'>
-                            <div className='color-2'>2</div>
-                            <div className='state-content'>Lệnh sản xuất lỗi</div>
-                        </div>
-                        <div className='state-3'>
-                            <div className='color-3'>3</div>
-                            <div className='state-content'>Chuyền đang nhanh hơn so với thiết kế</div>
-                        </div>
-                        <div className='state-4'>
-                            <div className='color-4'>4</div>
-                            <div className='state-content'>Lệnh sản xuất đang theo đúng kế hoạch</div>
-                        </div>
-                        <div className='state-5'>
-                            <div className='color-5'>5</div>
-                            <div className='state-content'>Chuyền đang chậm hơn so với thiết kế</div>
-                        </div>
                     </div>
                 </Col>
             </Row>
