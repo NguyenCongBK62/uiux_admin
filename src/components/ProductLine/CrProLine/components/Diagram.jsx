@@ -2,19 +2,21 @@
 import React, { useState } from 'react';
 
 import "../style.css";
+
 import {
-    Row,
-    Col
+    Select
 } from 'antd';
 
 import {
-    ArrowRightOutlined
+    ArrowRightOutlined,
 } from '@ant-design/icons';
+
+const { Option } = Select;
+
+const len = [1,2,3,4,5,6,7,8,9,10,11,12];
 
 const Diagram = (props) => {
 
-    const [inFrame, setInFrame] = useState(null);
-    const [index, setIndex] = useState(0);
     const [works, setWorks] = useState([]);
 
     const handleChange = (index, value) => {
@@ -39,86 +41,305 @@ const Diagram = (props) => {
         props.onChange(list);
     }
 
-    const addInFrame = (type, inValue) => {
-        const frames = inFrame || [];
-        let frame = null;
-        
-        switch (type) {
-            case 1:
-                frame = (
-                    <Col key={index}>
+    return (
+        <div id="diagram">
+            <div className="frame" style={{height: '55vh'}} >
+                <div className="in_frame">
+                    <div style={{display: 'flex'}}>
                         <div className="circle_1" />
-                    </Col>
-                );
-                break;
-            case 2:
-                frame = (
-                    <Col style={{display: 'flex'}} key={index}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={1}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={3}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={2}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={4}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={5}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={7}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
                         <div className="center_me">
                             <ArrowRightOutlined style={{fontSize: '38px'}} />
                         </div>
                         <div className="circle_2" />
-                    </Col>
-                );
-                break;
-            case 3:
-                frame = (
-                    <Col style={{display: 'flex'}} key={index}>
+                    </div>
+                </div>
+                <div className="conveyor" style={{marginTop: '5rem'}}></div>
+                <div className="in_frame" style={{marginTop: '10rem'}}>
+                    <div style={{display: 'flex'}}>
+                        <div className="circle_1" />
                         <div className="center_me">
                             <ArrowRightOutlined style={{fontSize: '38px'}} />
                         </div>
-                        <input type="text" id="rectangle_if" value={inValue} onChange={(event)=>{handleChange(index, event.target.value)}} />
-                    </Col>
-                );
-                break;
-            default:
-                break;
-        }
-
-        if (frames.length === 21){
-            frame = (
-                <Col style={{display: 'flex'}} key={index}>
-                    <div className="center_me">
-                        <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={6}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
                     </div>
-                    <div className="circle_2" />
-                </Col>
-            );
-            
-            frames.push(frame);
-            setIndex(index+1);
-            setInFrame(frames);
-            return;
-        } else if (frames.length === 22){
-            return;
-        }
-
-        frames.push(frame);
-        setIndex(index+1);
-        setInFrame(frames);
-    }
-
-    return (
-        <div id="diagram">
-            <div className="table_dia">
-                <p style={{fontWeight: 'bold'}} >Khung chọn</p>
-                <hr/>
-                <div className="circle_1" onClick={() => {addInFrame(1);}} />
-                <div className="circle_2" onClick={() => {addInFrame(2);}} />
-                <div id="rectangle" onClick={() => {addInFrame(3);}} />
-            </div>
-            <div className="frame" style={{height: '95%'}} >
-                <div className="inner">Khung chuyền</div>
-                <div className="vertical-line"></div>
-                <Row className="in_frame">
-                    {
-                        !inFrame? ''
-                        :
-                        inFrame.map((item) => {
-                            return item;
-                        })
-                    }
-                </Row>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={8}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={10}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={9}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={11}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="rectangle">
+                            <Select 
+                                showSearch
+                                style={{width: `100%`, height: '100%', border: '0'}}
+                                allowClear
+                                optionFilterProp="children"
+                                defaultValue={12}
+                                filterOption={(input, option) =>
+                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    len.map(item=> (
+                                        <Option value={item} key={item}><p className="text-p">{`Vị trí ${item}`}</p></Option>
+                                    ))
+                                }
+                            </Select>
+                        </div>
+                    </div>
+                    <div style={{display: 'flex'}}>
+                        <div className="center_me">
+                            <ArrowRightOutlined style={{fontSize: '38px'}} />
+                        </div>
+                        <div className="circle_2" />
+                    </div>
+                </div>
+                <div className="conveyor" style={{marginTop: `15rem`}}></div>
             </div>
         </div>
     );

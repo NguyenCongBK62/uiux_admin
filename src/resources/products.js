@@ -153,3 +153,34 @@ export const garment_materials = [
         name: 'Vải lót'
     },
 ]
+
+export const structures = [
+    {
+        id: 1,
+        name: 'Cấu trúc hàng dọc'
+    },
+    {
+        id: 2,
+        name: 'Cấu trúc chữ U'
+    },
+    {
+        id: 3,
+        name: 'Cấu trúc cụm'
+    },
+    {
+        id: 4,
+        name: 'Cấu trúc đơn vị'
+    },
+    {
+        id: 5,
+        name: 'Cấu trúc hỗn hợp dọc'
+    },
+    {
+        id: 6,
+        name: 'Cấu trúc hỗn hợp ngang'
+    },
+    {
+        id: 7,
+        name: 'Cấu trúc chữ L'
+    },
+];

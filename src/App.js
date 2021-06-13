@@ -4,6 +4,7 @@ import { Breadcrumb } from 'antd';
 import CommandWork from './components/CommandWork/CommandWork';
 import TablePrLine from './components/ProductLine/TablePrLine';
 import DashBoard from './components/DashBoard/DashBoard';
+import DashBoardUser from './components/DashBoard/DashBoardUser';
 import CommandDetail from './components/CommandDetail/CommandDetail';
 import KPIGroup from './components/KPI/KPIGroup/KPIGroup';
 import KPIProductLine from './components/KPI/KPIProductLine';
@@ -11,6 +12,8 @@ import KPICustoms from './components/KPI/KPICustoms';
 import PersonTable from './components/Person/Table';
 import PersonSignup from './components/Person/Signup';
 import ProductLineDetail from './components/ProductLineDetail/ProductLineDetail';
+// import TableWork from './components/WorkUser/TableWork';
+import ProcessWork from './components/WorkUser/ProcessWork';
 
 import {
   Switch,
@@ -126,6 +129,29 @@ function App() {
               </Breadcrumb.Item>
             </Breadcrumb>
             <PersonSignup />
+          </Route>
+          <Route path="/user" exact>
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>
+                <Link to="/user">User</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                DashBoard
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            <DashBoardUser />
+          </Route>
+          <Route path="/user/work">
+            <Breadcrumb style={{float: 'left', marginLeft: '55px', marginTop: '1rem'}}>
+              <Breadcrumb.Item>
+                <Link to="/user">User</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                Work
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            {/* <TableWork /> */}
+            <ProcessWork />
           </Route>
         </Switch>
       </div>

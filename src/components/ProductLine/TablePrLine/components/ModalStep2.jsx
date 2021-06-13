@@ -8,10 +8,17 @@ import {
     Form,
     Select,
     Input,
-    Tag
+    Tag,
+    Space
 } from 'antd';
 
+import {
+    MinusCircleOutlined,
+    PlusOutlined
+} from '@ant-design/icons';
+
 import { persons } from '../../../../resources/persons';
+import {listTask} from '../../../../resources/works';
 import { devices, garment_materials } from '../../../../resources/products';
 import Diagram from '../../CrProLine/components/Diagram';
 
@@ -63,7 +70,7 @@ const ModalStep2 = (props) => {
             props.handleEdit(diagram);
         }
     }
-    console.log(diagram);
+
     return (
         <div>
             <Modal
@@ -74,7 +81,7 @@ const ModalStep2 = (props) => {
                 } 
                 onCancel={props.handleCancelStep2}
                 centered
-                width={1200}
+                width={1500}
                 footer={[
                     <Button key="back" type="danger" onClick={props.handleCancelStep2}>
                         Huỷ
@@ -85,150 +92,254 @@ const ModalStep2 = (props) => {
                 ]}
             >
                 <Row>
-                    <Col span={16}>
+                    <Col span={12}>
                         <Diagram works={diagram.works} onChange={onhandleChange} />
                     </Col>
-                    <Col span={1} offset={1}>
+                    <Col span={1}>
                         <div className="vertical-line"></div>
                     </Col>
-                    <Col span={6}>
+                    <Col span={11}>
                         <h4>Chi tiết công việc</h4>
-                        <Form layout="vertical">
-                            <Form.Item
-                                name='name_work'
-                                label={`Tên công việc`}
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input 
-                                    placeholder={`Nhập tên công việc`} 
-                                    defaultValue={diagram.name_work} 
-                                    onChange={(event)=>{setDiagram({...diagram, name_work: event.target.value});}}
-                                />
-                            </Form.Item>
-                            <Form.Item
-                                name='time_work'
-                                label={`Thời gian (giây)`}
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input 
-                                    placeholder={`Nhập thời gian theo giây`} 
-                                    defaultValue={diagram.time_work} 
-                                    onChange={(event)=>{setDiagram({...diagram, time_work: event.target.value});}}
-                                />
-                            </Form.Item>
-                            <Form.Item
-                                name='weight_work'
-                                label={`Tải trọng của công việc`}
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input 
-                                    placeholder={`Nhập tải trọng`} 
-                                    defaultValue={diagram.weight_work}
-                                    onChange={(event)=>{setDiagram({...diagram, weight_work: event.target.value});}}
-                                />
-                            </Form.Item>
-                            <Form.Item
-                                name='person_works'
-                                label={`Danh sách người tham gia công việc`}
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Select 
-                                    showSearch
-                                    mode="multiple"
-                                    allowClear
-                                    showArrow
-                                    tagRender={tagRender}
-                                    placeholder="Chọn người tham gia"
-                                    defaultValue={diagram.person_works}
-                                    onChange={(value)=>{ setDiagram({...diagram, person_works: value}); }}
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) =>
-                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                    }
+                        <Form name="dynamic_form_nest_item" layout="vertical" autoComplete="off">
+                            <Space key={`1011`} style={{ display: 'flex', marginBottom: 1 }} align="baseline">
+                                <Form.Item
+                                    name='stt'
+                                    label={`STT`}
+                                    style={{width: '3rem'}}
+                                    rules={[{ required: true, message: 'Missing first name' }]}
                                 >
-                                    { 
-                                        persons.map(person => (
-                                            <Option value={person.name} key={person.id}>{person.name}</Option>
-                                        ))
-                                    }
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                name='device_works'
-                                label={`Danh sách dụng cụ`}
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Select 
-                                    showSearch
-                                    mode="multiple"
-                                    allowClear
-                                    showArrow
-                                    tagRender={tagRender}
-                                    onChange={(value)=>{ setDiagram({...diagram, device_works: value}); }}
-                                    placeholder="Chọn dụng cụ"
-                                    defaultValue={diagram.device_works}
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) =>
-                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                    }
+                                    <Input placeholder="STT" defaultValue={'1'} />
+                                </Form.Item>
+                                <Form.Item
+                                    name='task_works'
+                                    label={`Công nhân`}
+                                    style={{width: '12rem'}}
+                                    rules={[
+                                        {
+                                            required: true,
+                                        },
+                                    ]}
                                 >
-                                    { 
-                                        devices.map(device => (
-                                            <Option value={device.name} key={device.id}>{device.name}</Option>
-                                        ))
-                                    }
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                name='resource_works'
-                                label={`Danh sách nguyên liệu`}
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Select 
-                                    showSearch
-                                    mode="multiple"
-                                    allowClear
-                                    showArrow
-                                    tagRender={tagRender}
-                                    onChange={(value)=>{ setDiagram({...diagram, resource_works: value}); }}
-                                    placeholder="Chọn nguyên liệu"
-                                    defaultValue={diagram.resource_works}
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) =>
-                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                    }
+                                    <Select 
+                                        showSearch
+                                        allowClear
+                                        showArrow
+                                        tagRender={tagRender}
+                                        defaultValue={`Ủi gấp viền túi`}
+                                        placeholder="Chọn công việc"
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) =>
+                                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                        }
+                                    >
+                                        { 
+                                            listTask.map(item => 
+                                                <Option value={item.name} key={item.id}>{item.name}</Option>
+                                            )
+                                        }
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item
+                                    name='person_works'
+                                    label={`Công nhân`}
+                                    style={{width: '12rem'}}
+                                    rules={[
+                                        {
+                                            required: true,
+                                        },
+                                    ]}
                                 >
-                                    { 
-                                        garment_materials.map(g_m => (
-                                            <Option value={g_m.name} key={g_m.id}>{g_m.name}</Option>
-                                        ))
-                                    }
-                                </Select>
-                            </Form.Item>
+                                    <Select 
+                                        showSearch
+                                        mode="multiple"
+                                        allowClear
+                                        showArrow
+                                        tagRender={tagRender}
+                                        placeholder="Chọn người tham gia"
+                                        defaultValue={'Bùi Như Phú'}
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) =>
+                                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                        }
+                                    >
+                                        { 
+                                            persons.map(person => (
+                                                <Option value={person.name} key={person.id}>{person.name}</Option>
+                                            ))
+                                        }
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item
+                                    label={`Thời gian(giây)`}
+                                    rules={[{ required: true, message: 'Missing first name' }]}
+                                >
+                                    <Input placeholder="Thời gian" value={`26`} />
+                                </Form.Item>
+                            </Space>
+                            <Form.List name="dynamic">
+                                {(fields, { add, remove }) => (
+                                <>
+                                    {fields.map(({ key, name, fieldKey, ...restField }) => (
+                                        <Space key={key} style={{ display: 'flex', marginBottom: 1 }} align="baseline">
+                                            <Form.Item
+                                                {...restField}
+                                                name='stt'
+                                                label={`STT`}
+                                                fieldKey={[fieldKey, 'stt']}
+                                                style={{width: '3rem'}}
+                                                rules={[{ required: true, message: 'Missing first name' }]}
+                                            >
+                                                <Input placeholder="STT" defaultValue={key+2} />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={[name, 'task_works']}
+                                                label={`Công việc`}
+                                                style={{width: '12rem'}}
+                                                fieldKey={[fieldKey, 'task']}
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                    },
+                                                ]}
+                                            >
+                                                <Select 
+                                                    showSearch
+                                                    allowClear
+                                                    showArrow
+                                                    tagRender={tagRender}
+                                                    placeholder="Chọn công việc"
+                                                    optionFilterProp="children"
+                                                    filterOption={(input, option) =>
+                                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                    }
+                                                >
+                                                    { 
+                                                        listTask.map(item => 
+                                                            <Option value={item.name} key={item.id}>{item.name}</Option>
+                                                        )
+                                                    }
+                                                </Select>
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={[name, 'person_works']}
+                                                label={`Công nhân`}
+                                                style={{width: '12rem'}}
+                                                fieldKey={[fieldKey, 'person']}
+                                                {...restField}
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                    },
+                                                ]}
+                                            >
+                                                <Select 
+                                                    showSearch
+                                                    mode="multiple"
+                                                    allowClear
+                                                    showArrow
+                                                    tagRender={tagRender}
+                                                    placeholder="Chọn người tham gia"
+                                                    optionFilterProp="children"
+                                                    filterOption={(input, option) =>
+                                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                    }
+                                                >
+                                                    { 
+                                                        persons.map(person => (
+                                                            <Option value={person.name} key={person.id}>{person.name}</Option>
+                                                        ))
+                                                    }
+                                                </Select>
+                                            </Form.Item>
+                                            <Form.Item
+                                                {...restField}
+                                                label={`Thời gian(giây)`}
+                                                name={[name, 'time']}
+                                                fieldKey={[fieldKey, 'time']}
+                                                rules={[{ required: true, message: 'Missing first name' }]}
+                                            >
+                                                <Input placeholder="Thời gian" />
+                                            </Form.Item>
+                                            <MinusCircleOutlined onClick={() => remove(name)} />
+                                        </Space>
+                                    ))}
+                                    <Form.Item>
+                                        <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                                            Add field
+                                        </Button>
+                                    </Form.Item>
+                                    <Space key={`1000`} style={{ display: 'flex', marginBottom: 1 }} >
+                                        <Form.Item
+                                            name='device_works'
+                                            label={`Danh sách dụng cụ`}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                },
+                                            ]}
+                                        >
+                                            <Select 
+                                                showSearch
+                                                mode="multiple"
+                                                allowClear
+                                                showArrow
+                                                tagRender={tagRender}
+                                                placeholder="Chọn dụng cụ"
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) =>
+                                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                }
+                                            >
+                                                { 
+                                                    devices.map(device => (
+                                                        <Option value={device.name} key={device.id}>{device.name}</Option>
+                                                    ))
+                                                }
+                                            </Select>
+                                        </Form.Item>
+                                        <Form.Item
+                                            name='resource_works'
+                                            label={`Danh sách nguyên liệu`}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                },
+                                            ]}
+                                        >
+                                            <Select 
+                                                showSearch
+                                                mode="multiple"
+                                                allowClear
+                                                showArrow
+                                                tagRender={tagRender}
+                                                placeholder="Chọn nguyên liệu"
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) =>
+                                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                }
+                                            >
+                                                { 
+                                                    garment_materials.map(g_m => (
+                                                        <Option value={g_m.name} key={g_m.id}>{g_m.name}</Option>
+                                                    ))
+                                                }
+                                            </Select>
+                                        </Form.Item>
+                                        <Form.Item
+                                            name='weight_work'
+                                            label={`Tải trọng`}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                },
+                                            ]}
+                                        >
+                                            <Input placeholder={`Nhập tải trọng`} value={`101%`}/>
+                                        </Form.Item>
+                                    </Space>
+                                </>
+                                )}
+                            </Form.List>
                         </Form>
                     </Col>
                 </Row>

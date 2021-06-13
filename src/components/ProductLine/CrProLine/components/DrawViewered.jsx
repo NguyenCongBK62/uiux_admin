@@ -100,14 +100,7 @@ const Diagram = (props) => {
 
     return (
         <div id="diagram">
-            <div className="table_dia">
-                <p style={{fontWeight: 'bold'}} >Khung chọn</p>
-                <hr/>
-                <div className="circle_1" onClick={() => {addInFrame(1);}} />
-                <div className="circle_2" onClick={() => {addInFrame(2);}} />
-                <div id="rectangle" onClick={() => {addInFrame(3);}} />
-            </div>
-            <div className="frame" style={{height: '95%'}} >
+            <div className="frame" style={{height: '55vh'}} >
                 <div className="inner">Khung chuyền</div>
                 <div className="vertical-line"></div>
                 <Row className="in_frame">
