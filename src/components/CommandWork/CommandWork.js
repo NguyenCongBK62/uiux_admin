@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
-import './CommandWork.css';
-import { Table, Row, Col, Input, Button, Space, Tag } from 'antd';
+import './Commandwork.css';
+import { Table, Row, Col, Input, Button, Space, Progress } from 'antd';
 import Highlighter from 'react-highlight-words';
 import AddWork from './AddWork';
-import { DeleteOutlined, EyeOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
+import FixWork from './FixWork';
+import { DeleteOutlined, SearchOutlined, EyeOutlined } from '@ant-design/icons';
+import StateCommand from './StateCommand';
+import { Link } from 'react-router-dom';
+
+
 
 const data = [
   {
@@ -11,48 +16,98 @@ const data = [
     group: 'HCI_01',
     step: 'Áo khoác đồng phục',
     amount: 50,
-    state: 'Hoàn thành',
+    proccess: 100,
     factory: 'D',
-    dayStart: '22/1/2014',
-    dayEnd: '24/1/2014'
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
   },
   {
     key: '2',
     group: 'HCI_02',
     step: 'Áo khoác đồng phục',
     amount: 50,
-    state: '80%',
+    proccess: 80,
     factory: 'A',
-    dayStart: '22/1/2014',
-    dayEnd: '24/1/2014'
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
   },
   {
     key: '3',
     group: 'HCI_03',
     step: 'Áo khoác đồng phục',
     amount: 50,
-    state: '70%',
+    proccess: 70,
     factory: 'B',
-    dayStart: '22/1/2014',
-    dayEnd: '24/1/2014'
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
   },
   {
     key: '4',
     group: 'HCI_04',
     step: 'Áo khoác đồng phục',
     amount: 50,
-    state: 'Lỗi',
+    proccess: 30,
     factory: 'C',
-    dayStart: '22/1/2014',
-    dayEnd: '24/1/2014'
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
+  },
+  {
+    key: '5',
+    group: 'HCI_05',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    proccess: 72,
+    factory: 'C',
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
+  },
+  {
+    key: '6',
+    group: 'HCI_06',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    proccess: 77,
+    factory: 'C',
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
+  },
+  {
+    key: '7',
+    group: 'HCI_07',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    proccess: 92,
+    factory: 'C',
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
+  },
+  {
+    key: '8',
+    group: 'HCI_08',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    proccess: 62,
+    factory: 'C',
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
+  },
+  {
+    key: '9',
+    group: 'HCI_09',
+    step: 'Áo khoác đồng phục',
+    amount: 50,
+    proccess: 77,
+    factory: 'C',
+    dayStart: '8:00-22/1/2014',
+    dayEnd: '15:00-24/1/2014'
   },
 ];
+
 class CommandWork extends Component {
   state = {
     searchText: '',
     searchedColumn: '',
   };
-
   getColumnSearchProps = dataIndex => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
@@ -136,9 +191,10 @@ class CommandWork extends Component {
     filteredInfo = filteredInfo || {};
     const columns = [
       {
-        title: 'Đơn vị thực hiện',
+        title: 'Đơn vị',
         dataIndex: 'group',
         key: 'group',
+        width: 80,
         ...this.getColumnSearchProps('group'),
       },
       {
@@ -156,6 +212,7 @@ class CommandWork extends Component {
         title: 'Phân xưởng',
         dataIndex: 'factory',
         key: 'factory',
+        width: 80,
         ...this.getColumnSearchProps('factory'),
       },
       {
@@ -172,21 +229,25 @@ class CommandWork extends Component {
       },
       {
         title: 'Trạng thái',
-        dataIndex: 'state',
-        key: 'state',
-        ...this.getColumnSearchProps('state'),
-        render: state => {
-          let color = 'green';
-          if (state === 'Lỗi') {
-            color = 'red';
+        dataIndex: 'proccess',
+        key: 'proccess',
+        ...this.getColumnSearchProps('proccess'),
+        render: proccess => {
+          let status = 'default';
+          let color = '#1890ff';
+          if (proccess === 100) {
+            color = '#52c41a'
           }
-          if (state === 'Hoàn thành'){
-            color = 'geekblue'
+          if (proccess <= 50) {
+            status = 'exception';
+            color = 'red'
+          }
+          if (proccess > 50 && proccess < 70){
+            status = 'active'
+            color = 'yellow'
           }
           return (
-            <Tag color={color} key={state}>
-              {state}
-            </Tag>
+            <Progress percent={proccess} size="small" status={status} strokeColor={color}/>
           );
         },
       },
@@ -198,10 +259,10 @@ class CommandWork extends Component {
         render: () => (
           <Row>
             <Col span={8}>
-              <span style={{color: '86eaa0', fontSize: '18px', cursor: 'pointer'}}><EditOutlined /></span>
+              <FixWork/>
             </Col>
             <Col span={8}>
-              <span style={{color: '#86eaa0', fontSize: '18px', cursor: 'pointer'}}><EyeOutlined /></span>
+            <span style={{color: '#86eaa0', fontSize: '18px', cursor: 'pointer'}}><Link to='/commanddetail'><EyeOutlined /></Link></span>
             </Col>
             <Col span={8}>
               <span style={{color: 'red', fontSize: '18px', cursor: 'pointer'}}><DeleteOutlined /></span>
@@ -221,8 +282,9 @@ class CommandWork extends Component {
                   <AddWork/>
                 </Space>
             </Col>
-            <Table style={{width: '100%'}} columns={columns} dataSource={data} />
         </Row>
+        <StateCommand/>
+        <Table style={{width: '100%'}} columns={columns} dataSource={data} />
       </div>
     );
   }

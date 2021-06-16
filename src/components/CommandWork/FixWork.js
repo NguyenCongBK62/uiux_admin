@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import {
     Modal,
     Form,
-    Button,
     Select,
     DatePicker,
     InputNumber,
 } from 'antd';
+import moment from 'moment';
+import { EditOutlined } from '@ant-design/icons';
+const dateFormat = 'DD-MM-YYYY';
 
 
-
-
-const AddWork = () => {
+const FixWork = () => {
     const [form] = Form.useForm();
     
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -31,10 +31,8 @@ const AddWork = () => {
 
     return (
         <>
-        <Button type="primary" onClick={showModal}>
-            Thêm lệnh sản xuất
-        </Button>
-        <Modal title="Thêm lệnh sản xuất" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <span style={{color: '86eaa0', fontSize: '18px', cursor: 'pointer'}} onClick={showModal}><EditOutlined /></span>
+        <Modal title="Sửa lệnh" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <Form
                 labelCol={{
                 span: 6,
@@ -43,33 +41,32 @@ const AddWork = () => {
                 span: 16,
                 }}
                 layout="horizontal"
-                
             >
                 <Form.Item label="Đơn Vị thực hiện">
-                    <Select>
-                        <Select.Option value="demo">HCI_01</Select.Option>
+                    <Select defaultValue='hci1'>
+                        <Select.Option value="hci1">HCI_01</Select.Option>
                         <Select.Option value="demo">HCI_02</Select.Option>
                         <Select.Option value="demo">HCI_03</Select.Option>
                         <Select.Option value="demo">HCI_04</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item label="Chọn chuyền">
-                    <Select>
-                        <Select.Option value="demo">Khâu cổ áo khoác</Select.Option>
+                    <Select defaultValue='khau'>
+                        <Select.Option value="khau">Khâu cổ áo khoác</Select.Option>
                         <Select.Option value="demo">Gắn cúc áo sơ mi</Select.Option>
                         <Select.Option value="demo">May viền tay áo</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item label="Phân xưởng">
-                    <Select>
-                        <Select.Option value="demo">A</Select.Option>
+                    <Select defaultValue='A'>
+                        <Select.Option value="A">A</Select.Option>
                         <Select.Option value="demo">B</Select.Option>
                         <Select.Option value="demo">C</Select.Option>
                         <Select.Option value="demo">D</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item label="Ngày bắt đầu">
-                    <DatePicker />
+                    <DatePicker defaultValue={moment('05-06-2021', dateFormat)}/>
                 </Form.Item>
                 <Form.Item label="Ngày kết thúc">
                     <DatePicker />
@@ -83,4 +80,4 @@ const AddWork = () => {
     );
 };
 
-export default AddWork;
+export default FixWork;

@@ -1,0 +1,55 @@
+.square1{
+    width: 10px;
+    height: 10px;
+    margin-left: 1rem;
+    margin-top: 6px;
+    margin-right: 10px;
+    background-color: #52c41a;
+}
+
+.square2{
+    width: 10px;
+    height: 10px;
+    margin-left: 1rem;
+    margin-top: 6px;
+    margin-right: 10px;
+    background-color: red;
+}
+
+.square3{
+    width: 10px;
+    height: 10px;
+    margin-left: 1rem;
+    margin-top: 6px;
+    margin-right: 10px;
+    background-color: yellow;
+}
+
+.square4{
+    width: 10px;
+    height: 10px;
+    margin-left: 1rem;
+    margin-top: 6px;
+    margin-right: 10px;
+    background-color: #007bff;
+}
+
+.square5{
+    width: 10px;
+    height: 10px;
+    margin-left: 1rem;
+    margin-top: 6px;
+    margin-right: 10px;
+    background-color: #737775;
+}
+
+.state-command {
+    margin: 5px;
+    padding: 1rem 0;
+}
+
+.state {
+    margin: 0.5rem;
+    display: flex;
+    text-align: center;
+}

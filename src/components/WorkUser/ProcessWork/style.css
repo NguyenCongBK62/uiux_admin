@@ -1,0 +1,24 @@
+.frame-div {
+    border: 1px solid #414141;
+}
+
+.card-title {
+    width: 100%;
+    text-align: start;
+}
+
+.center-div {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 200px;
+}
+
+.table-td {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.div-check {
+    margin-bottom: 20px;
+}

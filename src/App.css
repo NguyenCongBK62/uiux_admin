@@ -38,3 +38,12 @@
     transform: rotate(360deg);
   }
 }
+
+div.vertical-line{
+  width: 1px; /* Line width */
+  background-color: rgb(212, 211, 211); /* Line color */
+  height: 100%; /* Override in-line if you want specific height. */
+  float: left; /* Causes the line to float to left of content. 
+    You can instead use position:absolute or display:inline-block
+    if this fits better with your design */
+}

@@ -1,0 +1,43 @@
+.command-chart {
+    text-align: center;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    border-left: 1px solid rgb(82, 146, 243) !important;
+    border-right: 1px solid rgb(82, 146, 243) !important;
+    border-bottom: 1px solid rgb(82, 146, 243) !important;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.command-chart-title {
+    font-size: 18px;
+    background-color: rgb(82, 146, 243);
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    color: white;
+}
+
+.command-chart-title-content {
+    font-size: 18px;
+    background-color: rgb(82, 146, 243);
+    text-align: left;
+    padding: 0.5rem 1rem;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    float: left;
+}
+
+.command-chart-title-icon {
+    font-size: 25px;
+    float: right;
+    cursor: pointer;
+    margin-left: 11rem;
+    padding-top: 0.5rem;
+}

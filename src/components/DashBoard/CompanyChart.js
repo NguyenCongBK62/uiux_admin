@@ -3,6 +3,7 @@ import { Input, DatePicker, Button } from 'antd';
 import { Column } from '@ant-design/charts';
 import './CompanyChart.css';
 const CompanyChart = () => {
+
   var data = [
     {
       name: 'Hệ thống đánh giá',
@@ -40,6 +41,11 @@ const CompanyChart = () => {
       kpi: 24,
     },
     {
+      name: 'Hệ thống đánh giá',
+      team: 'HCI 08',
+      kpi: 28.3,
+    },
+    {
       name: 'Tự đánh giá',
       team: 'HCI 01',
       kpi: 18.9,
@@ -73,6 +79,11 @@ const CompanyChart = () => {
       name: 'Tự đánh giá',
       team: 'HCI 07',
       kpi: 24,
+    },
+    {
+      name: 'Tự đánh giá',
+      team: 'HCI 08',
+      kpi: 30.3,
     },
     {
       name: 'Quản lí đánh giá',
@@ -109,6 +120,11 @@ const CompanyChart = () => {
       team: 'HCI 07',
       kpi: 37.4,
     },
+    {
+      name: 'Quản lí đánh giá',
+      team: 'HCI 08',
+      kpi: 39.4,
+    },
   ];
   var config = {
     data: data,
@@ -125,6 +141,7 @@ const CompanyChart = () => {
       ],
     },
   };
+  
   return (
     <div className='chart-company'>
       <Input.Group compact>

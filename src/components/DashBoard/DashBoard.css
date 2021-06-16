@@ -6,3 +6,22 @@
     overflow: scroll;
 }
 
+#card-person {
+    background-color: #ffc069;
+    margin-top: 1rem;
+}
+
+#card-prline {
+    background-color: #40a9ff;
+    margin-top: 1rem;
+}
+#card-product {
+    background-color: #95de64;
+    margin-top: 1rem;
+}
+
+.table-user {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
