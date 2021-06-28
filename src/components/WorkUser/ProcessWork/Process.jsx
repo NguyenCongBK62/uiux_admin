@@ -516,7 +516,10 @@ const Process = () => {
                 visible={isVisibleError}
                 onOk={handleOkReportError}
                 onCancel={()=>{setIsVisibleError(false)}}
-                footer={[]}
+                footer={[
+                    <Button key="back" onClick={()=> {setIsVisibleBC(false);}}>Huỷ</Button>,
+                    <Button key="submit" type="primary" onClick={handleBaoCao}>Báo cáo</Button>
+                ]}
             >
                 <Form layout="vertical">
                     <Form.Item label="Hình thức lỗi" name="checkbox-group">

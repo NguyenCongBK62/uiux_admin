@@ -101,6 +101,75 @@ const ModalStep2 = (props) => {
                     <Col span={11}>
                         <h4>Chi tiết công việc</h4>
                         <Form name="dynamic_form_nest_item" layout="vertical" autoComplete="off">
+                            <Space key={`1000`} style={{ display: 'flex', marginBottom: 1 }} >
+                                <Form.Item
+                                    name={['cde', 'device_works']}
+                                    label={`Danh sách dụng cụ`}
+                                    rules={[
+                                        {
+                                            required: true,
+                                        },
+                                    ]}
+                                >
+                                    <Select 
+                                        showSearch
+                                        mode="multiple"
+                                        allowClear
+                                        showArrow
+                                        tagRender={tagRender}
+                                        placeholder="Chọn dụng cụ"
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) =>
+                                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                        }
+                                    >
+                                        { 
+                                            devices.map(device => (
+                                                <Option value={device.name} key={device.id}>{device.name}</Option>
+                                            ))
+                                        }
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item
+                                    name={['abc','resource_works']}
+                                    label={`Danh sách nguyên liệu`}
+                                    rules={[
+                                        {
+                                            required: true,
+                                        },
+                                    ]}
+                                >
+                                    <Select 
+                                        showSearch
+                                        mode="multiple"
+                                        allowClear
+                                        showArrow
+                                        tagRender={tagRender}
+                                        placeholder="Chọn nguyên liệu"
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) =>
+                                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                        }
+                                    >
+                                        { 
+                                            garment_materials.map(g_m => (
+                                                <Option value={g_m.name} key={g_m.id}>{g_m.name}</Option>
+                                            ))
+                                        }
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item
+                                    name='weight_work'
+                                    label={`Tải trọng`}
+                                    rules={[
+                                        {
+                                            required: true,
+                                        },
+                                    ]}
+                                >
+                                    <Input placeholder={`Nhập tải trọng`} value={`101%`}/>
+                                </Form.Item>
+                            </Space>
                             <Space key={`1011`} style={{ display: 'flex', marginBottom: 1 }} align="baseline">
                                 <Form.Item
                                     name='stt'
@@ -112,7 +181,7 @@ const ModalStep2 = (props) => {
                                 </Form.Item>
                                 <Form.Item
                                     name='task_works'
-                                    label={`Công nhân`}
+                                    label={`Công việc`}
                                     style={{width: '12rem'}}
                                     rules={[
                                         {
@@ -268,75 +337,6 @@ const ModalStep2 = (props) => {
                                             Add field
                                         </Button>
                                     </Form.Item>
-                                    <Space key={`1000`} style={{ display: 'flex', marginBottom: 1 }} >
-                                        <Form.Item
-                                            name='device_works'
-                                            label={`Danh sách dụng cụ`}
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                },
-                                            ]}
-                                        >
-                                            <Select 
-                                                showSearch
-                                                mode="multiple"
-                                                allowClear
-                                                showArrow
-                                                tagRender={tagRender}
-                                                placeholder="Chọn dụng cụ"
-                                                optionFilterProp="children"
-                                                filterOption={(input, option) =>
-                                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                                }
-                                            >
-                                                { 
-                                                    devices.map(device => (
-                                                        <Option value={device.name} key={device.id}>{device.name}</Option>
-                                                    ))
-                                                }
-                                            </Select>
-                                        </Form.Item>
-                                        <Form.Item
-                                            name='resource_works'
-                                            label={`Danh sách nguyên liệu`}
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                },
-                                            ]}
-                                        >
-                                            <Select 
-                                                showSearch
-                                                mode="multiple"
-                                                allowClear
-                                                showArrow
-                                                tagRender={tagRender}
-                                                placeholder="Chọn nguyên liệu"
-                                                optionFilterProp="children"
-                                                filterOption={(input, option) =>
-                                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                                }
-                                            >
-                                                { 
-                                                    garment_materials.map(g_m => (
-                                                        <Option value={g_m.name} key={g_m.id}>{g_m.name}</Option>
-                                                    ))
-                                                }
-                                            </Select>
-                                        </Form.Item>
-                                        <Form.Item
-                                            name='weight_work'
-                                            label={`Tải trọng`}
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                },
-                                            ]}
-                                        >
-                                            <Input placeholder={`Nhập tải trọng`} value={`101%`}/>
-                                        </Form.Item>
-                                    </Space>
                                 </>
                                 )}
                             </Form.List>
